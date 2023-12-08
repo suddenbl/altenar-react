@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { container } from '../../styles/mixins'
-import { StyledHeader, Wrapper } from '../../styles/HeaderStyles'
+import { StyledHeader, Wrapper, WrapperText } from '../../styles/HeaderStyles'
 
 export const Container = styled.div`
   ${container}
@@ -33,9 +33,12 @@ export const WrapperCreation = styled(Wrapper)`
   margin-bottom: 0;
 
   p {
-    max-width: 30%;
+    max-width: 26%;
+    font-size: 14px;
   }
 `
+
+export const CreationWrapperText = styled(WrapperText)``
 
 export const WrapperLink = styled(Link)`
   color: #2196f3;
