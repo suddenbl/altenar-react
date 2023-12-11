@@ -23,11 +23,11 @@ export default (env: EnvVariables) => {
       clean: true,
     },
     plugins: [
-      new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public', 'index.html') }),
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].css',
-      }),
+      new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html') }),
+      // new MiniCssExtractPlugin({
+      //   filename: 'css/[name].[contenthash:3].css',
+      //   chunkFilename: 'css/[name].[contenthash:3].css',
+      // }),
     ].filter(Boolean),
     module: {
       rules: [
@@ -37,7 +37,8 @@ export default (env: EnvVariables) => {
         },
         {
           test: /\.s[ac]ss$/i,
-          use: [!isDev && MiniCssExtractPlugin.loader, 'css-loader'],
+          // use: [!isDev && MiniCssExtractPlugin.loader, 'css-loader'],
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.tsx?$/,
@@ -54,6 +55,7 @@ export default (env: EnvVariables) => {
       ? {
           port: env.port ?? 3000,
           open: true,
+          historyApiFallback: true,
         }
       : undefined,
   }

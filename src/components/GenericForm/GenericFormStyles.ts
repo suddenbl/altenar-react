@@ -8,6 +8,11 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 18px;
+  margin-bottom: 30px;
+`
+
+export const FormContainer = styled.div`
+  position: relative;
 `
 
 export const StyledInput = styled.input`

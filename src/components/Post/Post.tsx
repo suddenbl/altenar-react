@@ -1,10 +1,4 @@
-import {
-  PostItem,
-  PublishItem,
-  LinksItem,
-  TextAdditional,
-  TextMain,
-} from '../../styles/PostStyles'
+import { PostItem, PublishItem, LinksItem, TextAdditional, TextMain, Tooltip } from './PostStyles'
 import onionIMG from '../../assets/images/onion-small.jpg'
 import tooltipSuccess from '../../assets/images/tooltip-success.svg'
 import tooltipError from '../../assets/images/tooltip-error.svg'
@@ -22,7 +16,7 @@ export const Post = (props: any) => {
         </div>
       </PostItem>
       <PublishItem>
-        <img src={tooltipSuccess} alt="Success" />
+        <Tooltip src={tooltipSuccess} alt="Success" />
         <div>
           <TextMain>{props.publishName}</TextMain>
           <TextAdditional>{props.publishTime}</TextAdditional>

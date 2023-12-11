@@ -4,7 +4,6 @@ import { container } from '../../styles/mixins'
 export const SectionDivider = styled.div`
   width: 100%;
   height: 1px;
-  margin-bottom: 10px;
   padding-top: 1px;
   /* background-color: $grey-300; */
   background-color: #e0e0e0;
@@ -15,8 +14,7 @@ export const Section = styled.section`
 `
 
 export const SectionContainer = styled.div`
-  width: 35%;
-  margin-right: 20px;
+  width: 37%;
   overflow-y: scroll;
   height: 65vh;
   padding: 0 2px;
@@ -92,6 +90,7 @@ export const DownloadInput = styled.input`
   outline: 0;
   opacity: 0;
   cursor: pointer;
+  z-index: 100;
 `
 
 export const DownloadTextFirst = styled.p`
@@ -113,7 +112,6 @@ export const DownloadTextThird = styled.p`
 export const ColorInput = styled.input`
   width: 50px;
   height: 50px;
-  margin-bottom: 32px;
   border: none;
   border-radius: 48px;
   background-color: transparent;

@@ -35,6 +35,7 @@ export const Creation = () => {
       name: 'descriptor',
       placeholder: 'Дискриптор',
       value: descriptor,
+      inputLength: '30',
     },
     { type: 'text', name: 'name', placeholder: 'Название', value: name },
     {
@@ -42,24 +43,23 @@ export const Creation = () => {
       name: 'description',
       placeholder: 'Описание',
       value: description,
+      inputLength: '50',
     },
   ]
 
   // загрузите обложку
+  const [backgroundFile, setBackgroundFile] = useState('')
 
-  const [background, setBackground] = useState('')
-
-  const BackgroundFormInputs: InputConfig[] = [
+  const FileFormInputs: InputConfig[] = [
     {
       type: 'file',
       name: 'file',
       placeholder: 'Название',
-      value: background,
+      value: backgroundFile,
     },
   ]
 
   // выберите цвет
-
   const [color, setColor] = useState('')
 
   const ColorFormInputs: InputConfig[] = [
@@ -73,14 +73,25 @@ export const Creation = () => {
   // проверьте читабельность
 
   // оставьте ссылку
-
-  const [links, setLinks] = useState('')
+  const [titleName, setTitleName] = useState('')
+  const [link, setLink] = useState('')
 
   const LinksFormInputs: InputConfig[] = [
     {
+      flag: 'last',
       type: 'text',
-      name: 'links',
-      value: links,
+      placeholder: 'Название',
+      name: 'titleName',
+      value: titleName,
+      inputLength: '30',
+    },
+    {
+      flag: 'last',
+      type: 'text',
+      placeholder: 'Ссылка',
+      name: 'link',
+      value: link,
+      inputLength: '50',
     },
   ]
 
@@ -97,28 +108,12 @@ export const Creation = () => {
               <SectionDivider />
             </CreationBlock>
             <CreationBlock title="Загрузите обложку">
-              <GenericForm inputs={BackgroundFormInputs}></GenericForm>
-              {/* <SectionForm>
-                <DownloadLabel>
-                  <DownloadInput type="file" />
-                  <img src={downloadButton} alt="Download" />
-                  <div>
-                    <DownloadTextFirst>
-                      Перетащите файл или
-                      <DownloadTextSecond> загрузите с компьютера</DownloadTextSecond>
-                    </DownloadTextFirst>
-                    <DownloadTextThird>
-                      Соотношение 1:1. Минимальный размер 1242х1242 px
-                    </DownloadTextThird>
-                  </div>
-                </DownloadLabel>
-              </SectionForm> */}
+              <GenericForm inputs={FileFormInputs}></GenericForm>
               <SectionDivider />
             </CreationBlock>
             <CreationBlock
               title="Выберите цвет"
               description="Лучше всего подойдет цвет преобладающий на обложке">
-              {/* <ColorInput type="color" value="#9197A3" /> */}
               <GenericForm inputs={ColorFormInputs}></GenericForm>
               <SectionDivider />
             </CreationBlock>

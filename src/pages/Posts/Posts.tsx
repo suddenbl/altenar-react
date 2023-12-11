@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Header } from '../../components/Header/Header'
-import { Container, PostTitle } from '../../styles/PostsStyles'
+import { Container, PostTitle } from './PostsStyles'
 import postsData from '../../assets/postsData/postsData'
 import { Post } from '../../components/Post/Post'
 

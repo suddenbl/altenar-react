@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { container } from '../../styles/mixins'
-import { StyledHeader, Wrapper, WrapperText } from '../../styles/HeaderStyles'
+import { StyledHeader, Wrapper, WrapperText } from '../Header/HeaderStyles'
 
 export const Container = styled.div`
   ${container}
@@ -16,7 +16,8 @@ export const Header = styled(StyledHeader)`
 `
 
 export const LinkBack = styled(Link)`
-  display: inline-block;
+  display: flex;
+  gap: 5px;
   margin-bottom: 96px;
   color: rgba(0, 0, 0, 0.54);
   font-size: 14px;

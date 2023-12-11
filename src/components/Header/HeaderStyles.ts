@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { container } from './mixins'
+import { container } from '../../styles/mixins'
 import { Link } from 'react-router-dom'
 
 export const StyledHeader = styled.header`
@@ -46,6 +46,7 @@ export const LinkButton = styled(Link)`
   color: white;
   cursor: pointer;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  text-decoration: none;
 
   &:hover {
     background-color: #0b79d0;

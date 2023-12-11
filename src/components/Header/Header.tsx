@@ -7,7 +7,7 @@ import {
   LinkButton,
   SocialsWrapper,
   SocialsButton,
-} from '../../styles/HeaderStyles'
+} from './HeaderStyles'
 
 import buttonPlusImage from '../../assets/images/button-plus.svg'
 

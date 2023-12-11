@@ -1,4 +1,4 @@
-import { WrapperTitle } from '../../styles/HeaderStyles'
+import { WrapperTitle } from '../Header/HeaderStyles'
 import {
   Container,
   CreationWrapperText,
@@ -21,9 +21,8 @@ export const CreationHeader = () => {
         <WrapperCreation>
           <WrapperTitle>Создайте подборку</WrapperTitle>
           <CreationWrapperText>
-            Перед началом ознакомьтесь с{' '}
-            <WrapperLink to="/">гайдлайнами</WrapperLink>, где вы найдете примеры
-            правильного оформления
+            Перед началом ознакомьтесь с <WrapperLink to="/">гайдлайнами</WrapperLink>, где вы
+            найдете примеры правильного оформления
           </CreationWrapperText>
         </WrapperCreation>
       </Container>

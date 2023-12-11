@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { buttonReset } from './mixins'
+import { buttonReset } from '../../styles/mixins'
 
 export const itemMixin = `
   display: flex;
@@ -24,11 +24,12 @@ export const PostItem = styled.div`
 export const PublishItem = styled.div`
   ${itemMixin}
   gap: 10px;
-  img {
-    width: 9px;
-    height: 9px;
-    margin-bottom: 25px;
-  }
+`
+
+export const Tooltip = styled.img`
+  width: 9px;
+  height: 9px;
+  margin-bottom: 15px;
 `
 
 export const TextMain = styled.p`
