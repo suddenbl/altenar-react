@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { CreationHeader } from '../../components/CreationHeader/CreationHeader'
 import {
   ContentDisplay,
@@ -19,15 +18,15 @@ import {
   SectionDivider,
 } from './CreationStyles'
 
+import { useFormStore } from '../../zustand/store'
+
 import { CreationBlock } from '../../components/CreationBlock/CreationBlock'
 import { GenericForm, InputConfig } from '../../components/GenericForm/GenericForm'
 import { ToggleButton } from '../../components/ToggleButton/ToggleButton'
 
 export const Creation = () => {
-  // расскажите о подборке
-  const [descriptor, setDescriptor] = useState('')
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
+  const { descriptor, name, description, backgroundFile, color, linkTitleName, link } =
+    useFormStore()
 
   const DescriptionFormInputs: InputConfig[] = [
     {
@@ -37,7 +36,7 @@ export const Creation = () => {
       value: descriptor,
       inputLength: '30',
     },
-    { type: 'text', name: 'name', placeholder: 'Название', value: name },
+    { type: 'text', name: 'name', placeholder: 'Название', value: name, inputLength: '30' },
     {
       type: 'textarea',
       name: 'description',
@@ -48,8 +47,6 @@ export const Creation = () => {
   ]
 
   // загрузите обложку
-  const [backgroundFile, setBackgroundFile] = useState('')
-
   const FileFormInputs: InputConfig[] = [
     {
       type: 'file',
@@ -60,8 +57,6 @@ export const Creation = () => {
   ]
 
   // выберите цвет
-  const [color, setColor] = useState('')
-
   const ColorFormInputs: InputConfig[] = [
     {
       type: 'color',
@@ -71,18 +66,22 @@ export const Creation = () => {
   ]
 
   // проверьте читабельность
+  const ReadSwitchFormInputs: InputConfig[] = [
+    {
+      type: 'checkbox',
+      name: 'isDark',
+      value: name,
+    },
+  ]
 
   // оставьте ссылку
-  const [titleName, setTitleName] = useState('')
-  const [link, setLink] = useState('')
-
   const LinksFormInputs: InputConfig[] = [
     {
       flag: 'last',
       type: 'text',
       placeholder: 'Название',
       name: 'titleName',
-      value: titleName,
+      value: linkTitleName,
       inputLength: '30',
     },
     {
@@ -128,23 +127,6 @@ export const Creation = () => {
               title="Оставьте ссылку"
               description="Лучше всего ссылаться на каталог вашего магазина или промо-страницу">
               <GenericForm inputs={LinksFormInputs}></GenericForm>
-              {/* <SectionForm>
-                <FormSpan>
-                  <FormInput
-                    type="text"
-                    placeholder="Название"
-                    // value={descriptor}
-                    // onChange={(e) => setDescriptor(e.target.value)}
-                  />
-                  <FormInputDescription>30</FormInputDescription>
-                </FormSpan>
-                <FormLabelSpan>
-                  <img src={clipImg} alt="Clip" />
-                  <FormInputWithSVG type="text" placeholder="Ссылка" id="links" />
-                  <FormInputDescription>50</FormInputDescription>
-                </FormLabelSpan>
-              </SectionForm> */}
-              <SectionDivider />
             </CreationBlock>
             <SectionBlockLast>
               <LastButton children="СОЗДАТЬ" />
@@ -154,6 +136,7 @@ export const Creation = () => {
             </SectionBlockLast>
           </SectionContainer>
         </Section>
+
         <Preview>
           <PreviewContainer>
             <PreviewContent>
