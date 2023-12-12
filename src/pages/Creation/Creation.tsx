@@ -24,9 +24,20 @@ import { CreationBlock } from '../../components/CreationBlock/CreationBlock'
 import { GenericForm, InputConfig } from '../../components/GenericForm/GenericForm'
 import { ToggleButton } from '../../components/ToggleButton/ToggleButton'
 
+export interface DisplayBackgroundTypes {
+  background: File
+}
+
 export const Creation = () => {
-  const { descriptor, name, description, backgroundFile, color, linkTitleName, link } =
-    useFormStore()
+  const {
+    descriptor,
+    title,
+    description,
+    backgroundFile,
+    color,
+    linkTitleName,
+    link,
+  } = useFormStore()
 
   const DescriptionFormInputs: InputConfig[] = [
     {
@@ -36,7 +47,13 @@ export const Creation = () => {
       value: descriptor,
       inputLength: '30',
     },
-    { type: 'text', name: 'name', placeholder: 'Название', value: name, inputLength: '30' },
+    {
+      type: 'text',
+      name: 'title',
+      placeholder: 'Название',
+      value: title,
+      inputLength: '30',
+    },
     {
       type: 'textarea',
       name: 'description',
@@ -66,13 +83,13 @@ export const Creation = () => {
   ]
 
   // проверьте читабельность
-  const ReadSwitchFormInputs: InputConfig[] = [
-    {
-      type: 'checkbox',
-      name: 'isDark',
-      value: name,
-    },
-  ]
+  // const ReadSwitchFormInputs: InputConfig[] = [
+  //   {
+  //     type: 'checkbox',
+  //     name: 'isDark',
+  //     value: name,
+  //   },
+  // ]
 
   // оставьте ссылку
   const LinksFormInputs: InputConfig[] = [
@@ -80,7 +97,7 @@ export const Creation = () => {
       flag: 'last',
       type: 'text',
       placeholder: 'Название',
-      name: 'titleName',
+      name: 'linkTitleName',
       value: linkTitleName,
       inputLength: '30',
     },
@@ -93,6 +110,8 @@ export const Creation = () => {
       inputLength: '50',
     },
   ]
+
+  console.log(backgroundFile)
 
   return (
     <>
@@ -131,7 +150,8 @@ export const Creation = () => {
             <SectionBlockLast>
               <LastButton children="СОЗДАТЬ" />
               <LastDescription>
-                Подборка не будет опубликована. Вы сможете добавить продукты и внести правки
+                Подборка не будет опубликована. Вы сможете добавить продукты и внести
+                правки
               </LastDescription>
             </SectionBlockLast>
           </SectionContainer>
@@ -140,7 +160,7 @@ export const Creation = () => {
         <Preview>
           <PreviewContainer>
             <PreviewContent>
-              <ContentDisplay>
+              <ContentDisplay background={backgroundFile}>
                 <DisplayTop>
                   <DisplayTopTime>22:47</DisplayTopTime>
                   <DisplayTopIndicators>
@@ -149,13 +169,13 @@ export const Creation = () => {
                   </DisplayTopIndicators>
                 </DisplayTop>
                 <DisplayBottom>
-                  <DisplayBottomTitle>Onion</DisplayBottomTitle>
+                  <DisplayBottomTitle>
+                    {title.length === 0 ? 'Onion' : title}
+                  </DisplayBottomTitle>
                   <DisplayBottomDescription>
-                    The useful properties of onions are versatile. It is a powerful antimicrobial
-                    that effectively fights internal and external infection. Onions have antiviral,
-                    antibacterial, anthelmintic, antifungal, disinfectant properties. In case of
-                    colds, it is not only consumed internally, but also left indoors in cut form to
-                    disinfect the air.
+                    {description.length === 0
+                      ? 'The useful properties of onions are versatile. It is a powerful antimicrobial that effectively fights internal and external infection. Onions have antiviral,antibacterial, anthelmintic, antifungal, disinfectant properties. In case ofcolds, it is not only consumed internally, but also left indoors in cut form todisinfect the air.'
+                      : description}
                   </DisplayBottomDescription>
                 </DisplayBottom>
               </ContentDisplay>

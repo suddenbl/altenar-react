@@ -1,45 +1,51 @@
-// store.ts
 import { create } from 'zustand'
 
-interface CreationState {
+interface FormDataState {
   descriptor: string
-  name: string
+  title: string
   description: string
-  backgroundFile: string
+
+  backgroundFile: File | null
+  // backgroundFile: string
+
   color: string
   linkTitleName: string
   link: string
   isDark: boolean
-  setBackgroundFile: (file: string) => void
+  // formData: Record<string, string | File | boolean>
+
+  setDescriptor: (descriptor: string) => void
+  setTitle: (name: string) => void
+  setDescription: (description: string) => void
+  setSwitch: () => void
+
+  setBackgroundFile: (file: File) => void
+  // setBackgroundFile: (file: string) => void
+
   setColor: (color: string) => void
   setLinkTitleName: (title: string) => void
   setLink: (link: string) => void
 }
 
-interface FormDataState {
-  formData: Record<string, string | File | boolean>
-  setFormData: (name: string, value: string) => void
-  setFile: (name: string, file: File) => void
-  setSwitch: (name: string, isDark: boolean) => void
-}
-
-export const useFormStore = create<CreationState & FormDataState>((set) => ({
+export const useFormStore = create<FormDataState>((set) => ({
   descriptor: '',
-  name: '',
+  title: '',
   description: '',
-  backgroundFile: '',
+  backgroundFile: null,
   color: '',
   linkTitleName: '',
   link: '',
-  isDark: true,
-  formData: {},
-  setBackgroundFile: (file) => set({ backgroundFile: file }),
+  isDark: false,
+
+  setDescriptor: (descriptor) => set({ descriptor }),
+  setTitle: (title) => set({ title }),
+  setDescription: (description) => set({ description }),
+
+  setBackgroundFile: (file) => {
+    set({ backgroundFile: file })
+  },
   setColor: (color) => set({ color }),
   setLinkTitleName: (title) => set({ linkTitleName: title }),
   setLink: (link) => set({ link }),
-  setFormData: (name, value) =>
-    set((state) => ({ formData: { ...state.formData, [name]: value } })),
-  setFile: (name, file) => set((state) => ({ formData: { ...state.formData, [name]: file } })),
-  setSwitch: (name, isDark) =>
-    set((state) => ({ formData: { ...state.formData, [name]: isDark } })),
+  setSwitch: () => set((state) => ({ isDark: !state.isDark })),
 }))

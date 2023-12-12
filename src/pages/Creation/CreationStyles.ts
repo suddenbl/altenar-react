@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { container } from '../../styles/mixins'
+import { DisplayBackgroundTypes } from './Creation'
 
 export const SectionDivider = styled.div`
   width: 100%;
@@ -259,12 +260,18 @@ export const PreviewContainer = styled.div`
 `
 
 export const PreviewContent = styled.div`
+  width: 100%;
   height: 73.4%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #9197a3 22.4%, #9197a3 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    #9197a3 22.4%,
+    #9197a3 100%
+  );
   border-radius: 40px 40px 48px 48px;
 `
 
-export const ContentDisplay = styled.div`
+export const ContentDisplay = styled.div<DisplayBackgroundTypes>`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -273,7 +280,8 @@ export const ContentDisplay = styled.div`
   padding: 10px 19px;
   border: 13px solid #e4e4e4;
   border-radius: 47px;
-  /* background-image: url('../../assets/images/onion.png'); */
+  background-image: ${(props) => `url(${props.background})`};
+  background-size: cover;
   background-repeat: no-repeat;
 `
 

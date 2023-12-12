@@ -1,25 +1,18 @@
-import { ChangeEvent, useState } from 'react'
-import {
-  Container,
-  Input,
-  Label,
-  Switch,
-  TextOne,
-  TextTwo,
-} from './ToggleButtonsStyles'
+import { Container, Input, Label, Switch, TextOne, TextTwo } from './ToggleButtonsStyles'
+import { useFormStore } from '../../zustand/store'
 
 export const ToggleButton = () => {
-  const [checked, setChecked] = useState(false)
+  const { isDark, setSwitch } = useFormStore()
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked)
+  const handleCheckboxChange = () => {
+    setSwitch()
   }
 
   return (
     <Container>
       <TextOne>Темный</TextOne>
       <Label>
-        <Input type="checkbox" checked={checked} onChange={handleChange} />
+        <Input type="checkbox" checked={isDark} onChange={() => handleCheckboxChange()} />
         <Switch />
       </Label>
       <TextTwo>Светлый</TextTwo>

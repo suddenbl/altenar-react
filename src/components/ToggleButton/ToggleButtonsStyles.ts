@@ -37,7 +37,7 @@ export const Switch = styled.div`
     width: 17px;
     height: 17px;
     border-radius: 35px;
-    top: 50%;
+    top: 48%;
     left: 4px;
     background: white;
     transform: translate(0, -50%);

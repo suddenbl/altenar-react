@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { create } from 'zustand'
 import {
   Form,
   FormContainer,
@@ -19,15 +18,15 @@ import {
 import { useFormStore } from '../../zustand/store'
 
 import downloadButton from '../../assets/images/download.svg'
-import { ToggleButton } from '../ToggleButton/ToggleButton'
 
 type InputType = 'text' | 'textarea' | 'color' | 'file' | 'checkbox'
+
 export interface InputConfig {
   flag?: string
   type: InputType
   name: string
   placeholder?: string
-  value: string
+  value: string | File
   inputLength?: string
 }
 interface GenericFormProps {
@@ -35,14 +34,108 @@ interface GenericFormProps {
 }
 
 export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
-  const { formData, setFormData, setFile, setSwitch } = useFormStore()
-  console.log(formData)
+  const values = useFormStore()
 
   return (
     <Form>
-      {inputs.map(({ flag, type, name, placeholder, value, inputLength }) => (
+      {inputs.map(({ type, name, placeholder, inputLength }) => (
         <FormContainer key={name}>
-          {type === 'textarea' && (
+          {name === 'descriptor' && (
+            <>
+              <StyledInput
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                value={values.descriptor}
+                onChange={(e) => values.setDescriptor(e.target.value)}
+              />
+
+              <FormInputDescription>{inputLength}</FormInputDescription>
+            </>
+          )}
+          {name === 'title' && (
+            <>
+              <StyledInput
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                value={values.title}
+                onChange={(e) => values.setTitle(e.target.value)}
+              />
+              <FormInputDescription>{inputLength}</FormInputDescription>
+            </>
+          )}
+          {name === 'description' && (
+            <>
+              <StyledTextarea
+                name={name}
+                placeholder={placeholder}
+                value={values.description}
+                onChange={(e) => values.setDescription(e.target.value)}
+              />
+              <FormInputDescription>{inputLength}</FormInputDescription>
+            </>
+          )}
+          {name === 'file' && (
+            <>
+              <DownloadLabel>
+                <DownloadInput
+                  type="file"
+                  name={name}
+                  onChange={() => {
+                    values.setBackgroundFile(values.backgroundFile)
+                  }}
+                />
+                <img src={downloadButton} alt="Download" />
+                <div>
+                  <DownloadTextFirst>
+                    Перетащите файл или
+                    <DownloadTextSecond> загрузите с компьютера</DownloadTextSecond>
+                  </DownloadTextFirst>
+                  <DownloadTextThird>
+                    Соотношение 1:1. Минимальный размер 1242х1242 px
+                  </DownloadTextThird>
+                </div>
+              </DownloadLabel>
+            </>
+          )}
+          {name === 'color' && (
+            <>
+              <ColorInput
+                type={type}
+                name={name}
+                value={values.color.length === 0 ? '#9197A3' : values.color}
+                onChange={(e) => values.setColor(e.target.value)}
+              />
+            </>
+          )}
+          {name === 'linkTitleName' && (
+            <>
+              <StyledInput
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                value={values.linkTitleName}
+                onChange={(e) => values.setLinkTitleName(e.target.value)}
+              />
+
+              <FormInputDescription>{inputLength}</FormInputDescription>
+            </>
+          )}
+          {name === 'link' && (
+            <>
+              <StyledInput
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                value={values.link.length === 0 ? '' : values.link}
+                onChange={(e) => values.setLink(e.target.value)}
+              />
+              <FormInputDescription>{inputLength}</FormInputDescription>
+            </>
+          )}
+
+          {/* {type === 'textarea' && (
             <StyledTextarea
               name={name}
               placeholder={placeholder}
@@ -56,8 +149,8 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
                 type={type}
                 name={name}
                 placeholder={placeholder}
-                value={(formData[name] !== undefined ? String(formData[name]) : '') || value}
-                onChange={(e) => setFormData(name, e.target.value)}
+                value={title === undefined ? '' : title}
+                onChange={(e) => setTitle(e.target.value)}
               />
               {type === 'text' && <FormInputDescription>{inputLength}</FormInputDescription>}
             </>
@@ -110,13 +203,10 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
               }
               onChange={(e) => setFormData(name, e.target.value)}
             />
-          )}
+          )} */}
           {/* {type === 'checkbox' && (
-              <ToggleButton
-                name={name}
-                value={{ isDark: formData[name] }}
-                onClick={() => setSwitch(name)}></ToggleButton>
-            )} */}
+            <ToggleButton isChecked={formData[name]} onChange={() => setSwitch(name)} />
+          )} */}
         </FormContainer>
       ))}
     </Form>
