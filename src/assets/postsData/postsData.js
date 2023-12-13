@@ -1,10 +1,15 @@
 const posts = [
   {
-    name: 'Onion',
-    additionalName: '@altenar',
+    title: 'Onion',
+    description: '@altenar',
     success: true,
     publishName: 'altenar',
-    publishTime: '25/02/2022',
+    publishTime: new Date('2022-01-01').toLocaleDateString('ru-RU'),
+    backgroundFile: '../images/onion.png',
+    color: '#9197A3',
+    link: 'ttt',
+    linkTitleName: 'ttt',
+    isDark: true,
   },
 ]
 

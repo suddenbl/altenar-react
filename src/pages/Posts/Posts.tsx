@@ -16,7 +16,7 @@ export const Posts = () => {
           <PostTitle>Опубликовано</PostTitle>
           <PostTitle>Ссылка</PostTitle>
           {postsData.map((post) => (
-            <Post key={post.name} {...post} />
+            <Post key={post.title} {...post} />
           ))}
         </Container>
       </section>

@@ -49,7 +49,6 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
                 value={values.descriptor}
                 onChange={(e) => values.setDescriptor(e.target.value)}
               />
-
               <FormInputDescription>{inputLength}</FormInputDescription>
             </>
           )}
@@ -82,8 +81,12 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
                 <DownloadInput
                   type="file"
                   name={name}
-                  onChange={() => {
-                    values.setBackgroundFile(values.backgroundFile)
+                  onChange={(event) => {
+                    const file = event.target.files?.[0]
+                    if (file) {
+                      values.setBackgroundFile(file)
+                    }
+                    // values.setBackgroundFile(values.backgroundFile)
                   }}
                 />
                 <img src={downloadButton} alt="Download" />

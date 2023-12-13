@@ -17,27 +17,43 @@ import {
   SectionContainer,
   SectionDivider,
 } from './CreationStyles'
-
+import { useNavigate } from 'react-router-dom'
 import { useFormStore } from '../../zustand/store'
 
 import { CreationBlock } from '../../components/CreationBlock/CreationBlock'
 import { GenericForm, InputConfig } from '../../components/GenericForm/GenericForm'
 import { ToggleButton } from '../../components/ToggleButton/ToggleButton'
 
+import batteryImg from '../../assets/images/battery.svg'
+import wifiImg from '../../assets/images/wifi.svg'
+import posts from '../../assets/postsData/postsData'
+
 export interface DisplayBackgroundTypes {
-  background: File
+  background?: File | null | string
+  color?: string
+  readable?: boolean
 }
 
 export const Creation = () => {
+  const navigate = useNavigate()
+
   const {
     descriptor,
     title,
     description,
     backgroundFile,
     color,
+    isDark,
     linkTitleName,
     link,
+    success,
+    publishTime,
+    publishName,
   } = useFormStore()
+
+  const handleSubmitButton = () => {
+    navigate('/')
+  }
 
   const DescriptionFormInputs: InputConfig[] = [
     {
@@ -81,15 +97,6 @@ export const Creation = () => {
       value: color,
     },
   ]
-
-  // проверьте читабельность
-  // const ReadSwitchFormInputs: InputConfig[] = [
-  //   {
-  //     type: 'checkbox',
-  //     name: 'isDark',
-  //     value: name,
-  //   },
-  // ]
 
   // оставьте ссылку
   const LinksFormInputs: InputConfig[] = [
@@ -148,7 +155,11 @@ export const Creation = () => {
               <GenericForm inputs={LinksFormInputs}></GenericForm>
             </CreationBlock>
             <SectionBlockLast>
-              <LastButton children="СОЗДАТЬ" />
+              <LastButton
+                children="СОЗДАТЬ"
+                type="submit"
+                onClick={() => handleSubmitButton()}
+              />
               <LastDescription>
                 Подборка не будет опубликована. Вы сможете добавить продукты и внести
                 правки
@@ -159,20 +170,20 @@ export const Creation = () => {
 
         <Preview>
           <PreviewContainer>
-            <PreviewContent>
+            <PreviewContent color={color}>
               <ContentDisplay background={backgroundFile}>
                 <DisplayTop>
-                  <DisplayTopTime>22:47</DisplayTopTime>
-                  <DisplayTopIndicators>
-                    <img src="" alt="" />
-                    <img src="" alt="" />
+                  <DisplayTopTime readable={isDark}>22:47</DisplayTopTime>
+                  <DisplayTopIndicators readable={isDark}>
+                    <img src={wifiImg} alt="wifi" />
+                    <img src={batteryImg} alt="battery" />
                   </DisplayTopIndicators>
                 </DisplayTop>
                 <DisplayBottom>
-                  <DisplayBottomTitle>
+                  <DisplayBottomTitle readable={isDark}>
                     {title.length === 0 ? 'Onion' : title}
                   </DisplayBottomTitle>
-                  <DisplayBottomDescription>
+                  <DisplayBottomDescription readable={isDark}>
                     {description.length === 0
                       ? 'The useful properties of onions are versatile. It is a powerful antimicrobial that effectively fights internal and external infection. Onions have antiviral,antibacterial, anthelmintic, antifungal, disinfectant properties. In case ofcolds, it is not only consumed internally, but also left indoors in cut form todisinfect the air.'
                       : description}

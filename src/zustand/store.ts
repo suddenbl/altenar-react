@@ -5,14 +5,16 @@ interface FormDataState {
   title: string
   description: string
 
-  backgroundFile: File | null
+  backgroundFile: File | null | string
   // backgroundFile: string
 
   color: string
   linkTitleName: string
   link: string
   isDark: boolean
-  // formData: Record<string, string | File | boolean>
+  success: boolean
+  publishTime: Date
+  publishName: string
 
   setDescriptor: (descriptor: string) => void
   setTitle: (name: string) => void
@@ -36,14 +38,21 @@ export const useFormStore = create<FormDataState>((set) => ({
   linkTitleName: '',
   link: '',
   isDark: false,
+  success: true,
+  publishTime: new Date(),
+  publishName: '@altenar',
 
   setDescriptor: (descriptor) => set({ descriptor }),
   setTitle: (title) => set({ title }),
   setDescription: (description) => set({ description }),
 
   setBackgroundFile: (file) => {
-    set({ backgroundFile: file })
+    if (file) {
+      const url = URL.createObjectURL(file)
+      set({ backgroundFile: url })
+    }
   },
+
   setColor: (color) => set({ color }),
   setLinkTitleName: (title) => set({ linkTitleName: title }),
   setLink: (link) => set({ link }),

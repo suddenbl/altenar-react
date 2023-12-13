@@ -259,15 +259,13 @@ export const PreviewContainer = styled.div`
   align-items: center;
 `
 
-export const PreviewContent = styled.div`
+export const PreviewContent = styled.div<DisplayBackgroundTypes>`
   width: 100%;
   height: 73.4%;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    #9197a3 22.4%,
-    #9197a3 100%
-  );
+  background: ${(props) =>
+    props.color.length > 0
+      ? `linear-gradient(180deg, rgba(0, 0, 0, 0) 51%, ${props.color} 80.4%, ${props.color} 100%)`
+      : 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #9197A3 22.4%, #9197A3 100%);'};
   border-radius: 40px 40px 48px 48px;
 `
 
@@ -280,8 +278,12 @@ export const ContentDisplay = styled.div<DisplayBackgroundTypes>`
   padding: 10px 19px;
   border: 13px solid #e4e4e4;
   border-radius: 47px;
-  background-image: ${(props) => `url(${props.background})`};
-  background-size: cover;
+  background-image: ${(props) =>
+    props.background
+      ? `url(${props.background})`
+      : 'url(../../assets/images/photo.svg)'};
+  /* background-size: cover; */
+  background-size: 100% 55%;
   background-repeat: no-repeat;
 `
 
@@ -292,29 +294,43 @@ export const DisplayTop = styled.div`
   width: 100%;
 `
 
-export const DisplayTopTime = styled.p`
+export const DisplayTopTime = styled.p<DisplayBackgroundTypes>`
   /* color: $white; */
-  color: white;
+  color: ${(props) => (props.readable ? 'white' : 'black')};
   font-size: 11px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  transition: color 0.3s ease-in-out;
 `
-export const DisplayTopIndicators = styled.div``
+export const DisplayTopIndicators = styled.div<DisplayBackgroundTypes>`
+  display: flex;
+  gap: 5px;
+
+  img {
+    transition: filter 0.3s ease-in-out;
+    filter: ${(props) =>
+      props.readable
+        ? 'invert(100%) sepia(0%) saturate(0%) hue-rotate(240deg) brightness(102%) contrast(105%)'
+        : 'invert(0%) sepia(91%) saturate(7462%) hue-rotate(27deg) brightness(95%) contrast(109%)'};
+  }
+`
 
 export const DisplayBottom = styled.div`
   width: 100%;
   border-radius: 0px 0px 40px 40px;
 `
 
-export const DisplayBottomTitle = styled.p`
+export const DisplayBottomTitle = styled.p<DisplayBackgroundTypes>`
   margin-bottom: 8px;
   font-size: 20px;
   font-weight: 500;
   line-height: 32px;
+  color: ${(props) => (props.readable ? 'white' : 'black')};
+  transition: color 0.3s ease-in-out;
 `
 
-export const DisplayBottomDescription = styled.p`
+export const DisplayBottomDescription = styled.p<DisplayBackgroundTypes>`
   display: inline-block;
   width: 100%;
   height: 184px;
@@ -322,4 +338,6 @@ export const DisplayBottomDescription = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
+  color: ${(props) => (props.readable ? 'white' : 'black')};
+  transition: color 0.3s ease-in-out;
 `
