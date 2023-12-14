@@ -21,6 +21,11 @@ export const PostItem = styled.div`
   }
 `
 
+export const PostImage = styled.img`
+  max-width: 75px;
+  max-height: 75px;
+`
+
 export const PublishItem = styled.div`
   ${itemMixin}
   gap: 10px;

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import {
   Form,
   FormContainer,
@@ -32,6 +32,28 @@ export interface InputConfig {
 interface GenericFormProps {
   inputs: InputConfig[]
 }
+
+// interface imageInfo {
+//   width: number
+//   height: number
+// }
+
+// const handleErrorFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+//   const selectedFile = event.target.files[0]
+//   const reader = new FileReader();
+
+//   reader.onload = function(e: ProgressEvent<FileReader>) (
+//     const img = new Image()
+
+//     img.onload = () => {
+//       const imageSize: imageInfo = {
+//         width: img.width,
+//         height: img.height
+//       }
+//     }
+//   )
+
+// }
 
 export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
   const values = useFormStore()
@@ -80,13 +102,13 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
               <DownloadLabel>
                 <DownloadInput
                   type="file"
+                  accept="image/*"
                   name={name}
                   onChange={(event) => {
                     const file = event.target.files?.[0]
                     if (file) {
                       values.setBackgroundFile(file)
                     }
-                    // values.setBackgroundFile(values.backgroundFile)
                   }}
                 />
                 <img src={downloadButton} alt="Download" />
@@ -137,79 +159,6 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
               <FormInputDescription>{inputLength}</FormInputDescription>
             </>
           )}
-
-          {/* {type === 'textarea' && (
-            <StyledTextarea
-              name={name}
-              placeholder={placeholder}
-              value={(formData[name] !== undefined ? String(formData[name]) : '') || value}
-              onChange={(e) => setFormData(name, e.target.value)}
-            />
-          )}
-          {type === 'text' && flag !== 'last' && (
-            <>
-              <StyledInput
-                type={type}
-                name={name}
-                placeholder={placeholder}
-                value={title === undefined ? '' : title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              {type === 'text' && <FormInputDescription>{inputLength}</FormInputDescription>}
-            </>
-          )}
-          {type === 'text' && flag === 'last' && (
-            <>
-              <StyledInput
-                type={type}
-                name={name}
-                placeholder={placeholder}
-                value={(formData[name] !== undefined ? String(formData[name]) : '') || value}
-                onChange={(e) => setFormData(name, e.target.value)}
-              />
-              {type === 'text' && <FormInputDescription>{inputLength}</FormInputDescription>}
-            </>
-          )}
-          {type === 'file' && (
-            <>
-              <DownloadLabel>
-                <DownloadInput
-                  type="file"
-                  name={name}
-                  onChange={(e) => {
-                    const file = e.target.files && e.target.files[0]
-                    if (file) {
-                      setFile(name, file)
-                    }
-                  }}
-                />
-                <img src={downloadButton} alt="Download" />
-                <div>
-                  <DownloadTextFirst>
-                    Перетащите файл или
-                    <DownloadTextSecond> загрузите с компьютера</DownloadTextSecond>
-                  </DownloadTextFirst>
-                  <DownloadTextThird>
-                    Соотношение 1:1. Минимальный размер 1242х1242 px
-                  </DownloadTextThird>
-                </div>
-              </DownloadLabel>
-            </>
-          )}
-          {type === 'color' && (
-            <ColorInput
-              type={type}
-              name={name}
-              placeholder={placeholder}
-              value={
-                (formData[name] !== undefined ? String(formData[name]) : '') || value || '#9197A3'
-              }
-              onChange={(e) => setFormData(name, e.target.value)}
-            />
-          )} */}
-          {/* {type === 'checkbox' && (
-            <ToggleButton isChecked={formData[name]} onChange={() => setSwitch(name)} />
-          )} */}
         </FormContainer>
       ))}
     </Form>

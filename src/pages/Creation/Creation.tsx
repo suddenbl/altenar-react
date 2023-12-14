@@ -51,7 +51,47 @@ export const Creation = () => {
     publishName,
   } = useFormStore()
 
-  const handleSubmitButton = () => {
+  const pushDataToServer = async (data: Object) => {
+    console.log('Data to be sent to the server:', data)
+    console.log('Data (stringify) to be sent to the server:', JSON.stringify(data))
+    try {
+      const response = await fetch('http://localhost:3001/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      console.log('Server response:', response)
+    } catch (error) {
+      console.error('Error sending data to the server:', error)
+    }
+  }
+
+  const handleSubmitButton = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault()
+
+    let backgroundFileToAdd: string | File
+    if (backgroundFile instanceof File) {
+      backgroundFileToAdd = URL.createObjectURL(backgroundFile)
+    } else {
+      backgroundFileToAdd = backgroundFile || ''
+    }
+
+    const data = {
+      title,
+      description,
+      success,
+      publishName,
+      publishTime,
+      backgroundFile: backgroundFileToAdd,
+      color,
+      linkTitleName,
+      link,
+      isDark,
+      id: Math.floor(Math.random() * 1000),
+    }
+    pushDataToServer(data)
     navigate('/')
   }
 
@@ -118,7 +158,7 @@ export const Creation = () => {
     },
   ]
 
-  console.log(backgroundFile)
+  // console.log(backgroundFile)
 
   return (
     <>
@@ -155,14 +195,9 @@ export const Creation = () => {
               <GenericForm inputs={LinksFormInputs}></GenericForm>
             </CreationBlock>
             <SectionBlockLast>
-              <LastButton
-                children="СОЗДАТЬ"
-                type="submit"
-                onClick={() => handleSubmitButton()}
-              />
+              <LastButton children="СОЗДАТЬ" type="submit" onClick={(e) => handleSubmitButton(e)} />
               <LastDescription>
-                Подборка не будет опубликована. Вы сможете добавить продукты и внести
-                правки
+                Подборка не будет опубликована. Вы сможете добавить продукты и внести правки
               </LastDescription>
             </SectionBlockLast>
           </SectionContainer>

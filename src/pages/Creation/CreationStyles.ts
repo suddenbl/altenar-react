@@ -79,10 +79,15 @@ export const FormInput = styled.input`
 
 export const DownloadLabel = styled.label`
   position: relative;
-  border: 1px dashed ${textDisabled};
+  border: 2px dashed ${textDisabled};
   padding: 35px 37px 30px;
   display: flex;
   gap: 16px;
+  transition: border 0.3s ease-in-out;
+
+  &:active {
+    border: 2px dashed ${primaryMainColor};
+  }
 `
 
 export const DownloadInput = styled.input`
