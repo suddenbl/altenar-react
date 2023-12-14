@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { WrapperTitle } from '../Header/HeaderStyles'
 import {
   Container,
@@ -7,10 +8,9 @@ import {
   WrapperCreation,
   WrapperLink,
 } from './CreationHeaderStyles'
-
 import ArrowIMG from '../../assets/images/arrow.svg'
 
-export const CreationHeader = () => {
+export const CreationHeader: FC = () => {
   return (
     <Header>
       <Container>

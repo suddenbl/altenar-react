@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { buttonReset } from '../../styles/mixins'
-import { fontSizeNormal, textPrimary } from '../../styles'
+import { fontSizeNormal, textDisabled, textPrimary } from '../../styles'
 
 export const itemMixin = `
   display: flex;
@@ -47,7 +47,7 @@ export const TextMain = styled.p`
 `
 
 export const TextAdditional = styled.p`
-  color: ${textPrimary};
+  color: ${textDisabled};
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

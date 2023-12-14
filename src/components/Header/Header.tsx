@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import {
   StyledHeader,
   Container,
@@ -8,10 +9,9 @@ import {
   SocialsWrapper,
   SocialsButton,
 } from './HeaderStyles'
-
 import buttonPlusImage from '../../assets/images/button-plus.svg'
 
-export const Header = () => {
+export const Header: FC = () => {
   return (
     <>
       <StyledHeader>

@@ -296,7 +296,7 @@ export const DisplayTop = styled.div`
 `
 
 export const DisplayTopTime = styled.p<DisplayBackgroundTypes>`
-  color: ${(props) => (props.readable ? 'white' : 'black')};
+  color: ${(props) => (props.dark.length > 0 ? 'white' : 'black')};
   font-size: 11px;
   font-style: normal;
   font-weight: 600;
@@ -310,7 +310,7 @@ export const DisplayTopIndicators = styled.div<DisplayBackgroundTypes>`
   img {
     transition: filter 0.3s ease-in-out;
     filter: ${(props) =>
-      props.readable
+      props.dark.length > 0
         ? 'invert(100%) sepia(0%) saturate(0%) hue-rotate(240deg) brightness(102%) contrast(105%)'
         : ''};
   }
@@ -326,7 +326,7 @@ export const DisplayBottomTitle = styled.p<DisplayBackgroundTypes>`
   font-size: 20px;
   font-weight: 500;
   line-height: 32px;
-  color: ${(props) => (props.readable ? 'white' : 'black')};
+  color: ${(props) => (props.dark.length > 0 ? 'white' : 'black')};
   transition: color 0.3s ease-in-out;
 `
 
@@ -337,6 +337,6 @@ export const DisplayBottomDescription = styled.p<DisplayBackgroundTypes>`
   font-size: ${fontSizeNormal};
   font-weight: 400;
   line-height: 20px;
-  color: ${(props) => (props.readable ? 'white' : 'black')};
+  color: ${(props) => (props.dark.length > 0 ? 'white' : 'black')};
   transition: color 0.3s ease-in-out;
 `

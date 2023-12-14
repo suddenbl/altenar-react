@@ -1,10 +1,11 @@
+import { FC } from 'react'
 import { useEffect, useState } from 'react'
 import { Header } from '../../components/Header/Header'
 import { Container, PostTitle } from './PostsStyles'
 import { Post } from '../../components/Post/Post'
 import { PostData as PostDataType, usePostsStore } from '../../zustand/posts'
 
-export const Posts: React.FC = () => {
+export const Posts: FC = () => {
   const { setPosts, posts } = usePostsStore()
   const [loading, setLoading] = useState(true)
 

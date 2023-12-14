@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { CreationHeader } from '../../components/CreationHeader/CreationHeader'
 import {
   ContentDisplay,
@@ -19,22 +20,19 @@ import {
 } from './CreationStyles'
 import { useNavigate } from 'react-router-dom'
 import { useFormStore } from '../../zustand/store'
-
 import { CreationBlock } from '../../components/CreationBlock/CreationBlock'
 import { GenericForm, InputConfig } from '../../components/GenericForm/GenericForm'
 import { ToggleButton } from '../../components/ToggleButton/ToggleButton'
-
 import batteryImg from '../../assets/images/battery.svg'
 import wifiImg from '../../assets/images/wifi.svg'
-import posts from '../../assets/postsData/postsData'
 
 export interface DisplayBackgroundTypes {
   background?: File | null | string
   color?: string
-  readable?: boolean
+  dark?: string
 }
 
-export const Creation = () => {
+export const Creation: FC = () => {
   const navigate = useNavigate()
 
   const {
@@ -79,6 +77,7 @@ export const Creation = () => {
     }
 
     const data = {
+      descriptor,
       title,
       description,
       success,
@@ -118,8 +117,6 @@ export const Creation = () => {
       inputLength: '50',
     },
   ]
-
-  // загрузите обложку
   const FileFormInputs: InputConfig[] = [
     {
       type: 'file',
@@ -128,8 +125,6 @@ export const Creation = () => {
       value: backgroundFile,
     },
   ]
-
-  // выберите цвет
   const ColorFormInputs: InputConfig[] = [
     {
       type: 'color',
@@ -137,8 +132,6 @@ export const Creation = () => {
       value: color,
     },
   ]
-
-  // оставьте ссылку
   const LinksFormInputs: InputConfig[] = [
     {
       flag: 'last',
@@ -157,8 +150,6 @@ export const Creation = () => {
       inputLength: '50',
     },
   ]
-
-  // console.log(backgroundFile)
 
   return (
     <>
@@ -208,17 +199,19 @@ export const Creation = () => {
             <PreviewContent color={color}>
               <ContentDisplay background={backgroundFile}>
                 <DisplayTop>
-                  <DisplayTopTime readable={isDark}>22:47</DisplayTopTime>
-                  <DisplayTopIndicators readable={isDark}>
+                  <DisplayTopTime dark={isDark ? isDark.toString() : ''}>
+                    {new Date().toLocaleTimeString('ru-RU').slice(0, -3)}
+                  </DisplayTopTime>
+                  <DisplayTopIndicators dark={isDark ? isDark.toString() : ''}>
                     <img src={wifiImg} alt="wifi" />
                     <img src={batteryImg} alt="battery" />
                   </DisplayTopIndicators>
                 </DisplayTop>
                 <DisplayBottom>
-                  <DisplayBottomTitle readable={isDark}>
+                  <DisplayBottomTitle dark={isDark ? isDark.toString() : ''}>
                     {title.length === 0 ? 'Onion' : title}
                   </DisplayBottomTitle>
-                  <DisplayBottomDescription readable={isDark}>
+                  <DisplayBottomDescription dark={isDark ? isDark.toString() : ''}>
                     {description.length === 0
                       ? 'The useful properties of onions are versatile. It is a powerful antimicrobial that effectively fights internal and external infection. Onions have antiviral,antibacterial, anthelmintic, antifungal, disinfectant properties. In case ofcolds, it is not only consumed internally, but also left indoors in cut form todisinfect the air.'
                       : description}

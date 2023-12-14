@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import {
   PostItem,
   PublishItem,
@@ -7,29 +8,27 @@ import {
   Tooltip,
   PostImage,
 } from './PostStyles'
-import onionIMG from '../../assets/images/onion-small.jpg'
 import tooltipSuccess from '../../assets/images/tooltip-success.svg'
 import tooltipError from '../../assets/images/tooltip-error.svg'
 import clipIMG from '../../assets/images/clip.svg'
 import kebabButton from '../../assets/images/kebab-button.svg'
-
 import { PostData as PostDataType } from '../../zustand/posts'
 
-export const Post: React.FC<PostDataType> = (props) => {
+export const Post: FC<PostDataType> = (props) => {
   return (
     <>
       <PostItem>
-        <PostImage src={props.backgroundFile} alt="Аватарка" />
+        <PostImage src={props.backgroundFile} alt="Profile picture" />
         <div>
           <TextMain>{props.title}</TextMain>
-          <TextAdditional>{props.publishName}</TextAdditional>
+          <TextAdditional>{props.descriptor}</TextAdditional>
         </div>
       </PostItem>
       <PublishItem>
-        <Tooltip src={tooltipSuccess} alt="Success" />
+        <Tooltip src={props.success ? tooltipSuccess : tooltipError} alt="Status" />
         <div>
           <TextMain>{props.publishName}</TextMain>
-          <TextAdditional>{props.publishTime}</TextAdditional>
+          <TextAdditional>{new Date(props.publishTime).toLocaleDateString()}</TextAdditional>
         </div>
       </PublishItem>
       <LinksItem>

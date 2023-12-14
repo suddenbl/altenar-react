@@ -11,9 +11,10 @@ if (!root!) {
 
 const container = createRoot(root)
 container.render(
-  // <React.StrictMode>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  // </React.StrictMode>,
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+    ,
+  </React.StrictMode>,
 )

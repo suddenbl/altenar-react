@@ -1,4 +1,6 @@
+import { FC } from 'react'
 import styled from 'styled-components'
+import { primaryMainColor, primaryDarkColor } from '../../styles'
 
 export const StyledButton = styled.button`
   display: flex;
@@ -7,18 +9,22 @@ export const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
   gap: 5px;
-  border: 1px solid #2196f3;
+  border: 1px solid ${primaryMainColor};
   border-radius: 4px;
-  background-color: #2196f3;
+  background-color: ${primaryMainColor};
   color: white;
   cursor: pointer;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
   &:hover {
-    background-color: #0b79d0;
+    background-color: ${primaryDarkColor};
   }
 `
 
-export const Button = ({ children }: any) => {
+interface ButtonProps {
+  children: string
+}
+
+export const Button: FC<ButtonProps> = ({ children }) => {
   return <StyledButton>{children.toUpperCase()}</StyledButton>
 }

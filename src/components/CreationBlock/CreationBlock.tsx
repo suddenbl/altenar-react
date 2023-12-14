@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import styled from 'styled-components'
 import { BlockDescription, BlockTitle } from './CreationBlockStyles'
 
@@ -6,7 +7,13 @@ const Container = styled.div`
   margin-bottom: 35px;
 `
 
-export const CreationBlock = ({ title, description, children }: any) => {
+interface CreationBlockInterface {
+  title: string
+  description?: string
+  children: React.ReactNode
+}
+
+export const CreationBlock: FC<CreationBlockInterface> = ({ title, description, children }) => {
   return (
     <Container>
       <div>

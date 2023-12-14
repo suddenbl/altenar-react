@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import {
   Form,
   FormContainer,
@@ -14,13 +14,10 @@ import {
   DownloadTextSecond,
   DownloadTextThird,
 } from '../../pages/Creation/CreationStyles'
-
 import { useFormStore } from '../../zustand/store'
-
 import downloadButton from '../../assets/images/download.svg'
 
 type InputType = 'text' | 'textarea' | 'color' | 'file' | 'checkbox'
-
 export interface InputConfig {
   flag?: string
   type: InputType

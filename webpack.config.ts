@@ -3,6 +3,7 @@ import path from 'path'
 import webpack from 'webpack'
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
 type Mode = 'production' | 'development'
 
@@ -24,10 +25,11 @@ export default (env: EnvVariables) => {
     },
     plugins: [
       new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html') }),
-      // new MiniCssExtractPlugin({
-      //   filename: 'css/[name].[contenthash:3].css',
-      //   chunkFilename: 'css/[name].[contenthash:3].css',
-      // }),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:3].css',
+        chunkFilename: 'css/[name].[contenthash:3].css',
+      }),
+      new FaviconsWebpackPlugin('./src/assets/favicon.ico'),
     ].filter(Boolean),
     module: {
       rules: [
@@ -36,9 +38,12 @@ export default (env: EnvVariables) => {
           type: 'asset/resource',
         },
         {
+          test: /\.ico$/,
+          loader: 'file-loader',
+        },
+        {
           test: /\.s[ac]ss$/i,
-          // use: [!isDev && MiniCssExtractPlugin.loader, 'css-loader'],
-          use: ['style-loader', 'css-loader'],
+          use: [!isDev && MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
           test: /\.tsx?$/,

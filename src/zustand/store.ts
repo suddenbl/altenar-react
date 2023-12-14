@@ -31,9 +31,9 @@ export const useFormStore = create<FormDataState>((set) => ({
   linkTitleName: '',
   link: '',
   isDark: false,
-  success: true,
+  success: false,
   publishTime: new Date(),
-  publishName: 'altenar',
+  publishName: 'user',
 
   setDescriptor: (descriptor) => set({ descriptor }),
   setTitle: (title) => set({ title }),
