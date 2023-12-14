@@ -1,13 +1,22 @@
 import styled from 'styled-components'
 import { container } from '../../styles/mixins'
 import { DisplayBackgroundTypes } from './Creation'
+import {
+  fontSizeNormal,
+  grey300Color,
+  grey900Color,
+  primaryDarkColor,
+  primaryMainColor,
+  textDisabled,
+  textPrimary,
+  textSecondary,
+} from '../../styles'
 
 export const SectionDivider = styled.div`
   width: 100%;
   height: 1px;
   padding-top: 1px;
-  /* background-color: $grey-300; */
-  background-color: #e0e0e0;
+  background-color: ${grey300Color};
 `
 
 export const Section = styled.section`
@@ -30,14 +39,13 @@ export const SectionBlock = styled.div`
   display: flex;
   width: 95%;
   flex-direction: column;
-  /* gap: 10px; */
   margin-bottom: 20px;
 `
 
 export const SectionBlockFolder = styled.div``
 
 export const SectionBlockTitle = styled.h4`
-  color: #000000;
+  color: ${textPrimary};
   margin-bottom: 5px;
   font-size: 20px;
   font-weight: 500;
@@ -46,10 +54,9 @@ export const SectionBlockTitle = styled.h4`
 
 export const SectionBlockDescription = styled.p`
   /* color: $text-secondary; */
-  color: rgba(0, 0, 0, 0.54);
+  color: ${textSecondary};
   margin-bottom: 23px;
-  /* font-size: $font-size-normal; */
-  font-size: 14px;
+  font-size: fontSizeNormal;
   line-height: 20px;
 `
 
@@ -63,18 +70,16 @@ export const FormInput = styled.input`
   width: 100%;
   padding: 17px 11px;
   border: none;
-  /* border: 1px solid $grey-300; */
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${grey300Color};
   border-radius: 4px;
   &:hover {
-    outline: 1px solid #2196f3;
+    outline: 1px solid ${primaryMainColor};
   }
 `
 
 export const DownloadLabel = styled.label`
   position: relative;
-  /* border: 1px dashed $text-disabled; */
-  border: 1px dashed #e0e0e0;
+  border: 1px dashed ${textDisabled};
   padding: 35px 37px 30px;
   display: flex;
   gap: 16px;
@@ -100,14 +105,12 @@ export const DownloadTextFirst = styled.p`
 `
 
 export const DownloadTextSecond = styled.span`
-  /* color: $primary-main; */
-  color: #2196f3;
+  color: ${primaryMainColor};
 `
 
 export const DownloadTextThird = styled.p`
   font-size: 12px;
-  /* color: $text-secondary; */
-  color: rgba(0, 0, 0, 54);
+  color: ${textSecondary};
 `
 
 export const ColorInput = styled.input`
@@ -145,13 +148,13 @@ export const SwitchBlockLabel = styled.label`
 `
 
 export const SwitchBlockText = styled.span`
-  color: #000;
+  color: ${textPrimary};
   font-size: 12px;
   letter-spacing: 0.4px;
 `
 
 export const SwitchBlockTextSecond = styled.span`
-  color: rgba(0, 0, 0, 0.38);
+  color: ${textDisabled};
   font-size: 12px;
   letter-spacing: 0.4px;
 `
@@ -166,8 +169,7 @@ export const SwitchBlockInputSlider = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-color: $grey-900; */
-  background-color: #212121;
+  background-color: ${grey900Color};
   border-radius: 33px;
   cursor: pointer;
 
@@ -178,7 +180,6 @@ export const SwitchBlockInputSlider = styled.div`
     width: 17px;
     left: 3px;
     bottom: 3px;
-    /* background-color: $white; */
     background-color: white;
     border-radius: 17px;
     transition: transform 0.3s ease-in-out;
@@ -211,9 +212,7 @@ export const SectionBlockLast = styled(SectionBlock)`
 export const LastButton = styled.button`
   width: 100%;
   padding: 8px 22px;
-  /* background-color: $primary-main; */
-  background-color: #2196f3;
-  /* color: $white; */
+  background-color: ${primaryMainColor};
   color: white;
   border: none;
   border-radius: 4px;
@@ -225,7 +224,7 @@ export const LastButton = styled.button`
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
   &:hover {
-    background-color: #0b79d0;
+    background-color: ${primaryDarkColor};
   }
 `
 
@@ -236,8 +235,7 @@ export const LastDescription = styled.p`
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.4px;
-  /* color: $text-secondary; */
-  color: rgba(0, 0, 0, 0.54);
+  color: ${textSecondary};
   text-align: center;
 `
 export const Preview = styled.section`
@@ -246,8 +244,7 @@ export const Preview = styled.section`
   right: 17px;
   width: 59%;
   max-width: 1080px;
-  /* background-color: $grey-900; */
-  background-color: #212121;
+  background-color: ${grey900Color};
   border-radius: 14px;
 `
 
@@ -269,6 +266,8 @@ export const PreviewContent = styled.div<DisplayBackgroundTypes>`
   border-radius: 40px 40px 48px 48px;
 `
 
+import photo from '../../assets/images/photo.svg'
+
 export const ContentDisplay = styled.div<DisplayBackgroundTypes>`
   display: flex;
   flex-direction: column;
@@ -278,12 +277,9 @@ export const ContentDisplay = styled.div<DisplayBackgroundTypes>`
   padding: 10px 19px;
   border: 13px solid #e4e4e4;
   border-radius: 47px;
-  background-image: ${(props) =>
-    props.background
-      ? `url(${props.background})`
-      : 'url(../../assets/images/photo.svg)'};
-  /* background-size: cover; */
-  background-size: 100% 55%;
+  background-image: ${(props) => (props.background ? `url(${props.background})` : `url(${photo})`)};
+  background-size: ${(props) => (props.background ? '100% 55%' : '')};
+  background-position: ${(props) => (props.background ? '' : '50% 29%')};
   background-repeat: no-repeat;
 `
 
@@ -295,7 +291,6 @@ export const DisplayTop = styled.div`
 `
 
 export const DisplayTopTime = styled.p<DisplayBackgroundTypes>`
-  /* color: $white; */
   color: ${(props) => (props.readable ? 'white' : 'black')};
   font-size: 11px;
   font-style: normal;
@@ -312,7 +307,7 @@ export const DisplayTopIndicators = styled.div<DisplayBackgroundTypes>`
     filter: ${(props) =>
       props.readable
         ? 'invert(100%) sepia(0%) saturate(0%) hue-rotate(240deg) brightness(102%) contrast(105%)'
-        : 'invert(0%) sepia(91%) saturate(7462%) hue-rotate(27deg) brightness(95%) contrast(109%)'};
+        : ''};
   }
 `
 
@@ -334,8 +329,7 @@ export const DisplayBottomDescription = styled.p<DisplayBackgroundTypes>`
   display: inline-block;
   width: 100%;
   height: 184px;
-  /* font-size: $font-size-normal; */
-  font-size: 14px;
+  font-size: ${fontSizeNormal};
   font-weight: 400;
   line-height: 20px;
   color: ${(props) => (props.readable ? 'white' : 'black')};

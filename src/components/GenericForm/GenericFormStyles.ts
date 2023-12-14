@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { primaryMainColor, textSecondary } from '../../styles'
 
 export interface StyledInputProps {
   textarea?: boolean
@@ -21,7 +22,7 @@ export const StyledInput = styled.input`
   border: 1px solid #e0e0e0;
   border-radius: 4px;
   &:hover {
-    outline: 1px solid #2196f3;
+    outline: 1px solid ${primaryMainColor};
   }
 `
 export const StyledTextarea = styled.textarea`
@@ -33,7 +34,7 @@ export const StyledTextarea = styled.textarea`
   resize: none;
 
   &:hover {
-    outline: 1px solid #2196f3;
+    outline: 1px solid ${primaryMainColor};
   }
 `
 
@@ -41,5 +42,5 @@ export const FormInputDescription = styled.span`
   position: absolute;
   top: 20px;
   right: 17px;
-  color: rgba(0, 0, 0, 0.54);
+  color: ${textSecondary};
 `

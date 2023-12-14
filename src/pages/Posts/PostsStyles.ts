@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { container } from '../../styles/mixins'
+import { fontSizeNormal } from '../../styles'
 
 export const Container = styled.div`
   ${container}
@@ -10,8 +11,7 @@ export const Container = styled.div`
 `
 
 export const PostTitle = styled.div`
-  /* font-size: $font-size-normal; */
-  font-size: 14px;
+  font-size: ${fontSizeNormal};
   font-style: normal;
   font-weight: 500;
   line-height: 24px;

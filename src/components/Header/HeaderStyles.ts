@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { container } from '../../styles/mixins'
 import { Link } from 'react-router-dom'
+import { primaryDarkColor, primaryMainColor, textSecondary } from '../../styles'
 
 export const StyledHeader = styled.header`
   margin-bottom: 24px;
@@ -27,7 +28,7 @@ export const WrapperTitle = styled.h1`
 `
 
 export const WrapperText = styled.p`
-  color: rgba(0, 0, 0, 0.54);
+  color: ${textSecondary};
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
@@ -40,16 +41,16 @@ export const LinkButton = styled(Link)`
   align-items: center;
   justify-content: center;
   gap: 5px;
-  border: 1px solid #2196f3;
+  border: 1px solid ${primaryMainColor};
   border-radius: 4px;
-  background-color: #2196f3;
+  background-color: ${primaryMainColor};
   color: white;
   cursor: pointer;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
   text-decoration: none;
 
   &:hover {
-    background-color: #0b79d0;
+    background-color: ${primaryDarkColor};
   }
 `
 
@@ -63,12 +64,8 @@ export const SocialsButton = styled.button<{ $disabled?: boolean }>`
   background-color: transparent;
   border: none;
   border-radius: 0;
-  /* border-bottom: 1px solid $primary-main; */
-  /* border-bottom: 1px solid #2196f3; */
-  border-bottom: ${(props) => (props.$disabled ? 'none' : '1px solid #2196f3')};
-  /* color: $primary-main; */
-  /* color: #2196f3; */
-  color: ${(props) => (props.$disabled ? 'rgba(0, 0, 0, 0.54)' : '#2196f3')};
+  border-bottom: ${(props) => (props.$disabled ? 'none' : `1px solid ${primaryMainColor}`)};
+  color: ${(props) => (props.$disabled ? 'rgba(0, 0, 0, 0.54)' : `${primaryMainColor}`)};
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

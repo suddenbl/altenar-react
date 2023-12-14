@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { buttonReset } from '../../styles/mixins'
+import { fontSizeNormal, textPrimary } from '../../styles'
 
 export const itemMixin = `
   display: flex;
   flex-direction: row;
   gap: 15px;
   align-items: center;
-  /* font-size: $font-size-normal; */
-  font-size: 14px;
+  font-size: ${fontSizeNormal};
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
@@ -34,16 +34,15 @@ export const Tooltip = styled.img`
 
 export const TextMain = styled.p`
   /* color: $text-primary; */
-  color: #000;
-  font-size: 14px;
+  color: ${textPrimary};
+  font-size: ${fontSizeNormal};
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
 `
 
 export const TextAdditional = styled.p`
-  /* color: $text-disabled; */
-  color: rgba(0, 0, 0, 0.38);
+  color: ${textPrimary};
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -64,14 +63,16 @@ export const LinksItem = styled.div`
   button:hover {
     background-color: rgba(33, 150, 243, 0.04);
     img {
-      @include small-buttons-change-color;
+      filter: invert(63%) sepia(49%) saturate(7289%) hue-rotate(186deg) brightness(102%)
+        contrast(90%);
     }
   }
 
   button:active {
     background-color: rgba(33, 150, 243, 0.24);
     img {
-      @include small-buttons-change-color;
+      filter: invert(63%) sepia(49%) saturate(7289%) hue-rotate(186deg) brightness(102%)
+        contrast(90%);
     }
   }
 `

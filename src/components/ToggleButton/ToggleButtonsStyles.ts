@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { grey300Color, textDisabled, textPrimary, textSecondary } from '../../styles'
 
 export const Container = styled.div`
   display: flex;
@@ -12,13 +13,12 @@ export const Label = styled.label`
 `
 
 export const TextOne = styled.span`
-  /* color: $text-primary; */
-  color: #000000;
+  color: ${textPrimary};
   font-size: 12px;
   letter-spacing: 0.4px;
 `
 export const TextTwo = styled(TextOne)`
-  color: rgba(0, 0, 0, 0.38);
+  color: ${textDisabled};
 `
 
 export const Switch = styled.div`
@@ -47,7 +47,7 @@ export const Input = styled.input`
   display: none;
 
   &:checked + ${Switch} {
-    background: #e0e0e0;
+    background: ${grey300Color};
 
     &:before {
       transform: translate(26px, -50%);
