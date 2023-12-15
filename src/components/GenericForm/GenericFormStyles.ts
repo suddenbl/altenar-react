@@ -25,6 +25,15 @@ export const StyledInput = styled.input`
     outline: 1px solid ${primaryMainColor};
   }
 `
+export const StyledInputWithSvg = styled(StyledInput)`
+  padding-left: 45px;
+`
+
+export const StyledImg = styled.img`
+  position: absolute;
+  top: 15px;
+  left: 15px;
+`
 export const StyledTextarea = styled.textarea`
   width: 100%;
   height: 131px;

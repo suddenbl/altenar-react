@@ -19,7 +19,7 @@ import {
   SectionDivider,
 } from './CreationStyles'
 import { useNavigate } from 'react-router-dom'
-import { useFormStore } from '../../zustand/store'
+import { useFormStore } from '../../zustand/formDataStore'
 import { CreationBlock } from '../../components/CreationBlock/CreationBlock'
 import { GenericForm, InputConfig } from '../../components/GenericForm/GenericForm'
 import { ToggleButton } from '../../components/ToggleButton/ToggleButton'
@@ -69,11 +69,20 @@ export const Creation: FC = () => {
   const handleSubmitButton = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
 
+    const formData = new FormData()
+    const reader = new FileReader()
+
     let backgroundFileToAdd: string | File
     if (backgroundFile instanceof File) {
       backgroundFileToAdd = URL.createObjectURL(backgroundFile)
     } else {
       backgroundFileToAdd = backgroundFile || ''
+    }
+
+    reader.onloadend = () => {
+      if (reader.result && typeof reader.result === 'string') {
+        formData.append('file', reader.result)
+      }
     }
 
     const data = {

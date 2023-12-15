@@ -3,19 +3,15 @@ import {
   Form,
   FormContainer,
   FormInputDescription,
+  StyledImg,
   StyledInput,
+  StyledInputWithSvg,
   StyledTextarea,
 } from './GenericFormStyles'
-import {
-  ColorInput,
-  DownloadInput,
-  DownloadLabel,
-  DownloadTextFirst,
-  DownloadTextSecond,
-  DownloadTextThird,
-} from '../../pages/Creation/CreationStyles'
-import { useFormStore } from '../../zustand/store'
-import downloadButton from '../../assets/images/download.svg'
+import { ColorInput } from '../../pages/Creation/CreationStyles'
+import { useFormStore } from '../../zustand/formDataStore'
+import clip from '../../assets/images/clip.svg'
+import { DownloadComponent } from '../DownloadComponent/DownloadComponent'
 
 type InputType = 'text' | 'textarea' | 'color' | 'file' | 'checkbox'
 export interface InputConfig {
@@ -29,28 +25,6 @@ export interface InputConfig {
 interface GenericFormProps {
   inputs: InputConfig[]
 }
-
-// interface imageInfo {
-//   width: number
-//   height: number
-// }
-
-// const handleErrorFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-//   const selectedFile = event.target.files[0]
-//   const reader = new FileReader();
-
-//   reader.onload = function(e: ProgressEvent<FileReader>) (
-//     const img = new Image()
-
-//     img.onload = () => {
-//       const imageSize: imageInfo = {
-//         width: img.width,
-//         height: img.height
-//       }
-//     }
-//   )
-
-// }
 
 export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
   const values = useFormStore()
@@ -94,33 +68,7 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
               <FormInputDescription>{inputLength}</FormInputDescription>
             </>
           )}
-          {name === 'file' && (
-            <>
-              <DownloadLabel>
-                <DownloadInput
-                  type="file"
-                  accept="image/*"
-                  name={name}
-                  onChange={(event) => {
-                    const file = event.target.files?.[0]
-                    if (file) {
-                      values.setBackgroundFile(file)
-                    }
-                  }}
-                />
-                <img src={downloadButton} alt="Download" />
-                <div>
-                  <DownloadTextFirst>
-                    Перетащите файл или
-                    <DownloadTextSecond> загрузите с компьютера</DownloadTextSecond>
-                  </DownloadTextFirst>
-                  <DownloadTextThird>
-                    Соотношение 1:1. Минимальный размер 1242х1242 px
-                  </DownloadTextThird>
-                </div>
-              </DownloadLabel>
-            </>
-          )}
+          {name === 'file' && <DownloadComponent name={name} />}
           {name === 'color' && (
             <>
               <ColorInput
@@ -146,13 +94,14 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
           )}
           {name === 'link' && (
             <>
-              <StyledInput
+              <StyledInputWithSvg
                 type={type}
                 name={name}
                 placeholder={placeholder}
                 value={values.link.length === 0 ? '' : values.link}
                 onChange={(e) => values.setLink(e.target.value)}
               />
+              <StyledImg src={clip} alt="Clip" />
               <FormInputDescription>{inputLength}</FormInputDescription>
             </>
           )}

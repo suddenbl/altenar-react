@@ -19,27 +19,25 @@ export default (env: EnvVariables) => {
     mode: env.mode ?? 'development',
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: {
-      path: path.resolve(__dirname, 'build'),
+      path: path.resolve(__dirname, 'dist'),
       filename: '[name].[contenthash].js',
       clean: true,
     },
     plugins: [
-      new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html') }),
+      new FaviconsWebpackPlugin('public/favicon.ico'),
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'src', 'index.html'),
+      }),
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash:3].css',
         chunkFilename: 'css/[name].[contenthash:3].css',
       }),
-      new FaviconsWebpackPlugin('./src/assets/favicon.ico'),
     ].filter(Boolean),
     module: {
       rules: [
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource',
-        },
-        {
-          test: /\.ico$/,
-          loader: 'file-loader',
         },
         {
           test: /\.s[ac]ss$/i,

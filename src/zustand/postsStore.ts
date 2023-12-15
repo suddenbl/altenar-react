@@ -18,6 +18,7 @@ export interface PostData {
   success?: boolean
   publishTime?: string
   publishName?: string
+  id?: number
 }
 
 export const usePostsStore = create<PostsData>((set) => ({
