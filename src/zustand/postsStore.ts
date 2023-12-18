@@ -1,4 +1,3 @@
-// In usePostsStore.ts
 import { create } from 'zustand'
 
 export interface PostsData {
@@ -10,7 +9,7 @@ export interface PostData {
   descriptor?: string
   title?: string
   description?: string
-  backgroundFile: string
+  image: string
   color?: string
   linkTitleName?: string
   link?: string

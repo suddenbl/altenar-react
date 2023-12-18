@@ -19,7 +19,7 @@ export const Post: FC<PostDataType> = (props) => {
   return (
     <>
       <PostItem>
-        <PostImage src={props.backgroundFile} alt="Profile picture" />
+        <PostImage src={props.image} alt="Profile picture" />
         <div>
           <TextMain>{props.title}</TextMain>
           <TextAdditional>{props.descriptor}</TextAdditional>

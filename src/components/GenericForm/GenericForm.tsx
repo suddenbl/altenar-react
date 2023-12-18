@@ -19,7 +19,7 @@ export interface InputConfig {
   type: InputType
   name: string
   placeholder?: string
-  value: string | File
+  value: string
   inputLength?: string
 }
 interface GenericFormProps {

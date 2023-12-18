@@ -27,7 +27,7 @@ import batteryImg from '../../assets/images/battery.svg'
 import wifiImg from '../../assets/images/wifi.svg'
 
 export interface DisplayBackgroundTypes {
-  background?: File | null | string
+  background?: string
   color?: string
   dark?: string
 }
@@ -39,7 +39,7 @@ export const Creation: FC = () => {
     descriptor,
     title,
     description,
-    backgroundFile,
+    image,
     color,
     isDark,
     linkTitleName,
@@ -69,22 +69,6 @@ export const Creation: FC = () => {
   const handleSubmitButton = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
 
-    const formData = new FormData()
-    const reader = new FileReader()
-
-    let backgroundFileToAdd: string | File
-    if (backgroundFile instanceof File) {
-      backgroundFileToAdd = URL.createObjectURL(backgroundFile)
-    } else {
-      backgroundFileToAdd = backgroundFile || ''
-    }
-
-    reader.onloadend = () => {
-      if (reader.result && typeof reader.result === 'string') {
-        formData.append('file', reader.result)
-      }
-    }
-
     const data = {
       descriptor,
       title,
@@ -92,7 +76,7 @@ export const Creation: FC = () => {
       success,
       publishName,
       publishTime,
-      backgroundFile: backgroundFileToAdd,
+      image,
       color,
       linkTitleName,
       link,
@@ -131,7 +115,7 @@ export const Creation: FC = () => {
       type: 'file',
       name: 'file',
       placeholder: 'Название',
-      value: backgroundFile,
+      value: image,
     },
   ]
   const ColorFormInputs: InputConfig[] = [
@@ -206,7 +190,7 @@ export const Creation: FC = () => {
         <Preview>
           <PreviewContainer>
             <PreviewContent color={color}>
-              <ContentDisplay background={backgroundFile}>
+              <ContentDisplay background={image}>
                 <DisplayTop>
                   <DisplayTopTime dark={isDark ? isDark.toString() : ''}>
                     {new Date().toLocaleTimeString('ru-RU').slice(0, -3)}

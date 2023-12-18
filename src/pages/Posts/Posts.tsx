@@ -37,7 +37,7 @@ export const Posts: FC = () => {
           <PostTitle>Опубликовано</PostTitle>
           <PostTitle>Ссылка</PostTitle>
           {loading ? (
-            <p>Loading...</p>
+            <p>Идет загрузка постов...</p>
           ) : (
             posts.map((post: PostDataType) => <Post key={post.title} {...post} />)
           )}

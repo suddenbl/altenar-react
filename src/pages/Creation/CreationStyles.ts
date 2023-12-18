@@ -11,6 +11,7 @@ import {
   textPrimary,
   textSecondary,
 } from '../../styles'
+import photo from '../../assets/images/photo.svg'
 
 export const SectionDivider = styled.div`
   width: 100%;
@@ -228,8 +229,6 @@ export const PreviewContent = styled.div<DisplayBackgroundTypes>`
       : 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #9197A3 22.4%, #9197A3 100%);'};
   border-radius: 40px 40px 48px 48px;
 `
-
-import photo from '../../assets/images/photo.svg'
 
 export const ContentDisplay = styled.div<DisplayBackgroundTypes>`
   display: flex;

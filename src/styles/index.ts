@@ -1,17 +1,18 @@
-import { createGlobalStyle } from 'styled-components'
-import { normalize } from 'styled-normalize'
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
-export const fontSizeNormal = '14px'
-export const textPrimary = '#000000'
-export const textSecondary = 'rgba(0, 0, 0, 0.54)'
-export const textDisabled = 'rgba(0, 0, 0, 0.38)'
+export const fontSizeNormal = '14px';
+export const textPrimary = '#000000';
+export const textSecondary = 'rgba(0, 0, 0, 0.54)';
+export const textDisabled = 'rgba(0, 0, 0, 0.38)';
 
-export const primaryMainColor = '#2196f3'
-export const primaryDarkColor = '#0b79d0'
-export const errorColor = ' #f44336'
-export const grey300Color = '#e0e0e0     '
-export const grey900Color = '#212121'
-export const scrollColor = '#bdbdbd'
+export const primaryMainColor = '#2196f3';
+export const primaryDarkColor = '#0b79d0';
+export const errorColor = '#960101';
+export const errorBackground = '#ff9a8f';
+export const grey300Color = '#e0e0e0     ';
+export const grey900Color = '#212121';
+export const scrollColor = '#bdbdbd';
 
 export const GlobalStyle = createGlobalStyle`
     ${normalize}   
@@ -44,4 +45,4 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
-`
+`;

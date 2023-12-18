@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { buttonReset } from '../../styles/mixins'
-import { fontSizeNormal, textDisabled, textPrimary } from '../../styles'
+import styled from 'styled-components';
+import { buttonReset } from '../../styles/mixins';
+import { fontSizeNormal, textDisabled, textPrimary } from '../../styles';
 
 export const itemMixin = `
   display: flex;
@@ -12,39 +12,38 @@ export const itemMixin = `
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.15px;
-`
+`;
 
 export const PostItem = styled.div`
   ${itemMixin}
   img {
     border-radius: 4px;
   }
-`
+`;
 
 export const PostImage = styled.img`
   max-width: 75px;
   max-height: 75px;
-`
+`;
 
 export const PublishItem = styled.div`
   ${itemMixin}
   gap: 10px;
-`
+`;
 
 export const Tooltip = styled.img`
   width: 9px;
   height: 9px;
   margin-bottom: 15px;
-`
+`;
 
 export const TextMain = styled.p`
-  /* color: $text-primary; */
   color: ${textPrimary};
   font-size: ${fontSizeNormal};
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
-`
+`;
 
 export const TextAdditional = styled.p`
   color: ${textDisabled};
@@ -53,7 +52,7 @@ export const TextAdditional = styled.p`
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.4px;
-`
+`;
 
 export const LinksItem = styled.div`
   ${itemMixin}
@@ -80,4 +79,4 @@ export const LinksItem = styled.div`
         contrast(90%);
     }
   }
-`
+`;
