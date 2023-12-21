@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC } from 'react';
 import {
   StyledHeader,
   Container,
@@ -8,8 +8,8 @@ import {
   LinkButton,
   SocialsWrapper,
   SocialsButton,
-} from './HeaderStyles'
-import buttonPlusImage from '../../assets/images/button-plus.svg'
+} from './HeaderStyles';
+import buttonPlusImage from '../../assets/images/button-plus.svg';
 
 export const Header: FC = () => {
   return (
@@ -33,5 +33,5 @@ export const Header: FC = () => {
         </Container>
       </StyledHeader>
     </>
-  )
-}
+  );
+};

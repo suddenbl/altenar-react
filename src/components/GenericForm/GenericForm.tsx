@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC } from 'react';
 import {
   Form,
   FormContainer,
@@ -7,27 +7,27 @@ import {
   StyledInput,
   StyledInputWithSvg,
   StyledTextarea,
-} from './GenericFormStyles'
-import { ColorInput } from '../../pages/Creation/CreationStyles'
-import { useFormStore } from '../../zustand/formDataStore'
-import clip from '../../assets/images/clip.svg'
-import { DownloadComponent } from '../DownloadComponent/DownloadComponent'
+} from './GenericFormStyles';
+import { ColorInput } from '../../pages/Creation/CreationStyles';
+import { useFormStore } from '../../zustand/formDataStore';
+import clip from '../../assets/images/clip.svg';
+import { DownloadComponent } from '../DownloadComponent/DownloadComponent';
 
-type InputType = 'text' | 'textarea' | 'color' | 'file' | 'checkbox'
+type InputType = 'text' | 'textarea' | 'color' | 'file' | 'checkbox';
 export interface InputConfig {
-  flag?: string
-  type: InputType
-  name: string
-  placeholder?: string
-  value: string
-  inputLength?: string
+  flag?: string;
+  type: InputType;
+  name: string;
+  placeholder?: string;
+  value: string;
+  inputLength?: string;
 }
 interface GenericFormProps {
-  inputs: InputConfig[]
+  inputs: InputConfig[];
 }
 
 export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
-  const values = useFormStore()
+  const values = useFormStore();
 
   return (
     <Form>
@@ -88,7 +88,6 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
                 value={values.linkTitleName}
                 onChange={(e) => values.setLinkTitleName(e.target.value)}
               />
-
               <FormInputDescription>{inputLength}</FormInputDescription>
             </>
           )}
@@ -108,5 +107,5 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
         </FormContainer>
       ))}
     </Form>
-  )
-}
+  );
+};

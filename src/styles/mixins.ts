@@ -1,7 +1,7 @@
 export const container = `
   width: 1300px;
   margin: 0 auto;
-`
+`;
 export const buttonReset = `
   padding: 0;
   border: none;
@@ -9,4 +9,4 @@ export const buttonReset = `
   color: inherit;
   background-color: transparent;
   cursor: pointer;
-`
+`;

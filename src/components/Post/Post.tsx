@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC } from 'react';
 import {
   PostItem,
   PublishItem,
@@ -7,13 +7,12 @@ import {
   TextMain,
   Tooltip,
   PostImage,
-} from './PostStyles'
-import tooltipSuccess from '../../assets/images/tooltip-success.svg'
-import tooltipError from '../../assets/images/tooltip-error.svg'
-import clipIMG from '../../assets/images/clip.svg'
-import kebabButton from '../../assets/images/kebab-button.svg'
-import { PostData as PostDataType } from '../../zustand/postsStore'
-import { Dropdown } from '../Dropdown/Dropdown'
+} from './PostStyles';
+import tooltipSuccess from '../../assets/images/tooltip-success.svg';
+import tooltipError from '../../assets/images/tooltip-error.svg';
+import clipIMG from '../../assets/images/clip.svg';
+import { PostData as PostDataType } from '../../zustand/postsStore';
+import { Dropdown } from '../Dropdown/Dropdown';
 
 export const Post: FC<PostDataType> = (props) => {
   return (
@@ -39,5 +38,5 @@ export const Post: FC<PostDataType> = (props) => {
         <Dropdown id={props.id}></Dropdown>
       </LinksItem>
     </>
-  )
-}
+  );
+};

@@ -1,13 +1,13 @@
-import { FC } from 'react'
-import { Container, Input, Label, Switch, TextOne, TextTwo } from './ToggleButtonsStyles'
-import { useFormStore } from '../../zustand/formDataStore'
+import { FC } from 'react';
+import { Container, Input, Label, Switch, TextOne, TextTwo } from './ToggleButtonsStyles';
+import { useFormStore } from '../../zustand/formDataStore';
 
 export const ToggleButton: FC = () => {
-  const { isDark, setSwitch } = useFormStore()
+  const { isDark, setSwitch } = useFormStore();
 
   const handleCheckboxChange = () => {
-    setSwitch()
-  }
+    setSwitch();
+  };
 
   return (
     <Container>
@@ -18,5 +18,5 @@ export const ToggleButton: FC = () => {
       </Label>
       <TextTwo>Светлый</TextTwo>
     </Container>
-  )
-}
+  );
+};

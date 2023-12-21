@@ -1,22 +1,22 @@
-import { FC, useState } from 'react'
-import kebabButton from '../../assets/images/kebab-button.svg'
+import { FC, useState } from 'react';
+import kebabButton from '../../assets/images/kebab-button.svg';
 import {
   DropdownButton,
   DropdownContent,
   DropdownContentItem,
   DropdownContentItemText,
-} from './DropdownStyles'
+} from './DropdownStyles';
 
 export interface PublishProps {
-  id: number
+  id: number;
 }
 
 export const Dropdown: FC<PublishProps> = (props) => {
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleClick = () => {
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
 
   const handlePublish = (id: number) => {
     fetch(`http://localhost:3001/posts/${id}`, {
@@ -25,14 +25,14 @@ export const Dropdown: FC<PublishProps> = (props) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ success: true }),
-    })
-  }
+    });
+  };
 
   const handleDelete = (id: number) => {
     fetch(`http://localhost:3001/posts/${id}`, {
       method: 'DELETE',
-    })
-  }
+    });
+  };
 
   return (
     <DropdownButton onClick={() => handleClick()}>
@@ -48,5 +48,5 @@ export const Dropdown: FC<PublishProps> = (props) => {
         </DropdownContent>
       )}
     </DropdownButton>
-  )
-}
+  );
+};

@@ -1,32 +1,29 @@
-import { FC } from 'react'
-import { useEffect, useState } from 'react'
-import { Header } from '../../components/Header/Header'
-import { Container, PostTitle } from './PostsStyles'
-import { Post } from '../../components/Post/Post'
-import { PostData as PostDataType, usePostsStore } from '../../zustand/postsStore'
+import { FC } from 'react';
+import { useEffect, useState } from 'react';
+import { Header } from '../../components/Header/Header';
+import { Container, PostTitle } from './PostsStyles';
+import { Post } from '../../components/Post/Post';
+import { PostData as PostDataType, usePostsStore } from '../../zustand/postsStore';
 
 export const Posts: FC = () => {
-  const { setPosts, posts } = usePostsStore()
-  const [loading, setLoading] = useState(true)
+  const { setPosts, posts } = usePostsStore();
+  const [loading, setLoading] = useState(true);
 
   const getPosts = async () => {
     try {
-      const response = await fetch('http://localhost:3001/posts')
-      console.log('response', response)
+      const response = await fetch('http://localhost:3001/posts');
+      const data = await response.json();
 
-      const data = await response.json()
-      console.log('data', data)
-
-      setPosts(data)
-      setLoading(false)
+      setPosts(data);
+      setLoading(false);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
-    getPosts()
-  }, [])
+    getPosts();
+  }, []);
 
   return (
     <>
@@ -44,5 +41,5 @@ export const Posts: FC = () => {
         </Container>
       </section>
     </>
-  )
-}
+  );
+};

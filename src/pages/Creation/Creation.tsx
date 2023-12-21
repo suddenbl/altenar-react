@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { CreationHeader } from '../../components/CreationHeader/CreationHeader'
+import { FC } from 'react';
+import { CreationHeader } from '../../components/CreationHeader/CreationHeader';
 import {
   ContentDisplay,
   DisplayBottom,
@@ -17,23 +17,17 @@ import {
   SectionBlockLast,
   SectionContainer,
   SectionDivider,
-} from './CreationStyles'
-import { useNavigate } from 'react-router-dom'
-import { useFormStore } from '../../zustand/formDataStore'
-import { CreationBlock } from '../../components/CreationBlock/CreationBlock'
-import { GenericForm, InputConfig } from '../../components/GenericForm/GenericForm'
-import { ToggleButton } from '../../components/ToggleButton/ToggleButton'
-import batteryImg from '../../assets/images/battery.svg'
-import wifiImg from '../../assets/images/wifi.svg'
-
-export interface DisplayBackgroundTypes {
-  background?: string
-  color?: string
-  dark?: string
-}
+} from './CreationStyles';
+import { useNavigate } from 'react-router-dom';
+import { useFormStore } from '../../zustand/formDataStore';
+import { CreationBlock } from '../../components/CreationBlock/CreationBlock';
+import { GenericForm, InputConfig } from '../../components/GenericForm/GenericForm';
+import { ToggleButton } from '../../components/ToggleButton/ToggleButton';
+import batteryImg from '../../assets/images/battery.svg';
+import wifiImg from '../../assets/images/wifi.svg';
 
 export const Creation: FC = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const {
     descriptor,
@@ -47,11 +41,9 @@ export const Creation: FC = () => {
     success,
     publishTime,
     publishName,
-  } = useFormStore()
+  } = useFormStore();
 
   const pushDataToServer = async (data: Object) => {
-    console.log('Data to be sent to the server:', data)
-    console.log('Data (stringify) to be sent to the server:', JSON.stringify(data))
     try {
       const response = await fetch('http://localhost:3001/posts', {
         method: 'POST',
@@ -59,15 +51,15 @@ export const Creation: FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
-      })
-      console.log('Server response:', response)
+      });
+      console.log('Server response:', response);
     } catch (error) {
-      console.error('Error sending data to the server:', error)
+      console.error('Error sending data to the server:', error);
     }
-  }
+  };
 
   const handleSubmitButton = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const data = {
       descriptor,
@@ -82,10 +74,10 @@ export const Creation: FC = () => {
       link,
       isDark,
       id: Math.floor(Math.random() * 1000),
-    }
-    pushDataToServer(data)
-    navigate('/')
-  }
+    };
+    pushDataToServer(data);
+    navigate('/');
+  };
 
   const DescriptionFormInputs: InputConfig[] = [
     {
@@ -109,7 +101,7 @@ export const Creation: FC = () => {
       value: description,
       inputLength: '50',
     },
-  ]
+  ];
   const FileFormInputs: InputConfig[] = [
     {
       type: 'file',
@@ -117,14 +109,14 @@ export const Creation: FC = () => {
       placeholder: 'Название',
       value: image,
     },
-  ]
+  ];
   const ColorFormInputs: InputConfig[] = [
     {
       type: 'color',
       name: 'color',
       value: color,
     },
-  ]
+  ];
   const LinksFormInputs: InputConfig[] = [
     {
       flag: 'last',
@@ -142,7 +134,7 @@ export const Creation: FC = () => {
       value: link,
       inputLength: '50',
     },
-  ]
+  ];
 
   return (
     <>
@@ -170,7 +162,7 @@ export const Creation: FC = () => {
               title="Проверьте читабельность"
               description="Выберите цвет интерфейса, который будет контрастнее смотреться на
               выбранном фоне">
-              <ToggleButton></ToggleButton>
+              <ToggleButton />
               <SectionDivider />
             </CreationBlock>
             <CreationBlock
@@ -189,22 +181,22 @@ export const Creation: FC = () => {
 
         <Preview>
           <PreviewContainer>
-            <PreviewContent color={color}>
-              <ContentDisplay background={image}>
+            <PreviewContent $background={image}>
+              <ContentDisplay $color={color}>
                 <DisplayTop>
-                  <DisplayTopTime dark={isDark ? isDark.toString() : ''}>
+                  <DisplayTopTime $dark={isDark ? isDark.toString() : ''}>
                     {new Date().toLocaleTimeString('ru-RU').slice(0, -3)}
                   </DisplayTopTime>
-                  <DisplayTopIndicators dark={isDark ? isDark.toString() : ''}>
+                  <DisplayTopIndicators $dark={isDark ? isDark.toString() : ''}>
                     <img src={wifiImg} alt="wifi" />
                     <img src={batteryImg} alt="battery" />
                   </DisplayTopIndicators>
                 </DisplayTop>
                 <DisplayBottom>
-                  <DisplayBottomTitle dark={isDark ? isDark.toString() : ''}>
+                  <DisplayBottomTitle $dark={isDark ? isDark.toString() : ''}>
                     {title.length === 0 ? 'Onion' : title}
                   </DisplayBottomTitle>
-                  <DisplayBottomDescription dark={isDark ? isDark.toString() : ''}>
+                  <DisplayBottomDescription $dark={isDark ? isDark.toString() : ''}>
                     {description.length === 0
                       ? 'The useful properties of onions are versatile. It is a powerful antimicrobial that effectively fights internal and external infection. Onions have antiviral,antibacterial, anthelmintic, antifungal, disinfectant properties. In case ofcolds, it is not only consumed internally, but also left indoors in cut form todisinfect the air.'
                       : description}
@@ -216,5 +208,5 @@ export const Creation: FC = () => {
         </Preview>
       </main>
     </>
-  )
-}
+  );
+};

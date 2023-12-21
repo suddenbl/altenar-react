@@ -31,7 +31,6 @@ export const DownloadComponent: FC<DownloadComponentProps> = ({ name }) => {
 
   const [widthImg, setWidthImg] = useState('');
   const [heightImg, setHeightImg] = useState('');
-
   const [progress, setProgress] = useState(0);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

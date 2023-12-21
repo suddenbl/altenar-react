@@ -1,6 +1,6 @@
-import { FC } from 'react'
-import styled from 'styled-components'
-import { primaryMainColor, primaryDarkColor } from '../../styles'
+import { FC } from 'react';
+import styled from 'styled-components';
+import { primaryMainColor, primaryDarkColor } from '../../styles';
 
 export const StyledButton = styled.button`
   display: flex;
@@ -19,12 +19,12 @@ export const StyledButton = styled.button`
   &:hover {
     background-color: ${primaryDarkColor};
   }
-`
+`;
 
 interface ButtonProps {
-  children: string
+  children: string;
 }
 
 export const Button: FC<ButtonProps> = ({ children }) => {
-  return <StyledButton>{children.toUpperCase()}</StyledButton>
-}
+  return <StyledButton>{children.toUpperCase()}</StyledButton>;
+};

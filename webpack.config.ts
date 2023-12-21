@@ -1,19 +1,19 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import path from 'path'
-import webpack from 'webpack'
-import type { Configuration as DevServerConfiguration } from 'webpack-dev-server'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import webpack from 'webpack';
+import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 
-type Mode = 'production' | 'development'
+type Mode = 'production' | 'development';
 
 interface EnvVariables {
-  mode: Mode
-  port: number
+  mode: Mode;
+  port: number;
 }
 
 export default (env: EnvVariables) => {
-  const isDev = env.mode === 'development'
+  const isDev = env.mode === 'development';
 
   const config: webpack.Configuration = {
     mode: env.mode ?? 'development',
@@ -61,6 +61,6 @@ export default (env: EnvVariables) => {
           historyApiFallback: true,
         }
       : undefined,
-  }
-  return config
-}
+  };
+  return config;
+};

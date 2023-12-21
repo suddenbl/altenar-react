@@ -1,26 +1,26 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
 interface FormDataState {
-  descriptor: string
-  title: string
-  description: string
-  image: string
-  color: string
-  linkTitleName: string
-  link: string
-  isDark: boolean
-  success: boolean
-  publishTime: Date
-  publishName: string
+  descriptor: string;
+  title: string;
+  description: string;
+  image: string;
+  color: string;
+  linkTitleName: string;
+  link: string;
+  isDark: boolean;
+  success: boolean;
+  publishTime: Date;
+  publishName: string;
 
-  setDescriptor: (descriptor: string) => void
-  setTitle: (name: string) => void
-  setDescription: (description: string) => void
-  setSwitch: () => void
-  setImage: (backgroundFile: string) => void
-  setColor: (color: string) => void
-  setLinkTitleName: (title: string) => void
-  setLink: (link: string) => void
+  setDescriptor: (descriptor: string) => void;
+  setTitle: (name: string) => void;
+  setDescription: (description: string) => void;
+  setSwitch: () => void;
+  setImage: (backgroundFile: string) => void;
+  setColor: (color: string) => void;
+  setLinkTitleName: (title: string) => void;
+  setLink: (link: string) => void;
 }
 
 export const useFormStore = create<FormDataState>((set) => ({
@@ -44,4 +44,4 @@ export const useFormStore = create<FormDataState>((set) => ({
   setLinkTitleName: (title) => set({ linkTitleName: title }),
   setLink: (link) => set({ link }),
   setSwitch: () => set((state) => ({ isDark: !state.isDark })),
-}))
+}));
