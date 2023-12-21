@@ -95,7 +95,7 @@ export const DownloadComponent: FC<DownloadComponentProps> = ({ name }) => {
           </DownloadTextFirst>
           <DownloadTextThird>Соотношение 1:1. Минимальный размер 1242х1242 px</DownloadTextThird>
         </div>
-        {progress > 0 && progress < 100 && (
+        {!isError && progress > 0 && progress < 100 && (
           <ProgressBarContainer>
             <progress value={progress} max={100}></progress>
           </ProgressBarContainer>
