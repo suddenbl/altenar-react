@@ -13,14 +13,14 @@ interface FormDataState {
   publishTime: Date;
   publishName: string;
 
-  setDescriptor: (descriptor: string) => void;
-  setTitle: (name: string) => void;
-  setDescription: (description: string) => void;
+  setDescriptor: (descriptor: string, inputLength: number) => void;
+  setTitle: (name: string, inputLength: number) => void;
+  setDescription: (description: string, inputLength: number) => void;
   setSwitch: () => void;
   setImage: (backgroundFile: string) => void;
   setColor: (color: string) => void;
-  setLinkTitleName: (title: string) => void;
-  setLink: (link: string) => void;
+  setLinkTitleName: (title: string, inputLength: number) => void;
+  setLink: (link: string, inputLength: number) => void;
 }
 
 export const useFormStore = create<FormDataState>((set) => ({
@@ -36,12 +36,15 @@ export const useFormStore = create<FormDataState>((set) => ({
   publishTime: new Date(),
   publishName: 'user',
 
-  setDescriptor: (descriptor) => set({ descriptor }),
-  setTitle: (title) => set({ title }),
-  setDescription: (description) => set({ description }),
+  setDescriptor: (descriptor, inputLength) =>
+    descriptor.length <= inputLength && set({ descriptor }),
+  setTitle: (title, inputLength) => title.length <= inputLength && set({ title }),
+  setDescription: (description, inputLength) =>
+    description.length <= inputLength && set({ description }),
   setImage: (image) => set({ image }),
   setColor: (color) => set({ color }),
-  setLinkTitleName: (title) => set({ linkTitleName: title }),
-  setLink: (link) => set({ link }),
+  setLinkTitleName: (title, inputLength) =>
+    title.length <= inputLength && set({ linkTitleName: title }),
+  setLink: (link, inputLength) => link.length <= inputLength && set({ link }),
   setSwitch: () => set((state) => ({ isDark: !state.isDark })),
 }));

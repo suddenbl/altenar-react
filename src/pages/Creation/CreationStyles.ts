@@ -30,19 +30,12 @@ export const SectionContainer = styled.div`
   padding: 0 2px;
 `;
 
-export const CreationInput = styled.input`
-  width: 100%;
-  padding: 10px 5px;
-`;
-
 export const SectionBlock = styled.div`
   display: flex;
   width: 95%;
   flex-direction: column;
   margin-bottom: 20px;
 `;
-
-export const SectionBlockFolder = styled.div``;
 
 export const SectionBlockTitle = styled.h4`
   color: ${textPrimary};
@@ -240,8 +233,8 @@ export const ContentDisplay = styled.div<{ $color: string }>`
   border-radius: 47px;
   background: ${(props) =>
     props.$color.length > 0
-      ? `linear-gradient(180deg, rgba(0, 0, 0, 0) 49%, ${props.$color} 80.4%, ${props.$color} 100%)`
-      : 'linear-gradient(180deg, rgba(0, 0, 0, 0) 49%, #9197A3 80.4%, #9197A3 100%);'};
+      ? `linear-gradient(180deg, rgba(0, 0, 0, 0) 34%, ${props.$color} 57.4%, ${props.$color} 100%)`
+      : ''};
 `;
 
 export const DisplayTop = styled.div`
@@ -283,6 +276,7 @@ export const DisplayBottomTitle = styled.p<{ $dark: string }>`
   font-weight: 500;
   line-height: 32px;
   color: ${(props) => (props.$dark.length > 0 ? 'white' : 'black')};
+  word-wrap: break-word;
   transition: color 0.3s ease-in-out;
 `;
 
@@ -294,5 +288,6 @@ export const DisplayBottomDescription = styled.p<{ $dark: string }>`
   font-weight: 400;
   line-height: 20px;
   color: ${(props) => (props.$dark.length > 0 ? 'white' : 'black')};
+  word-wrap: break-word;
   transition: color 0.3s ease-in-out;
 `;

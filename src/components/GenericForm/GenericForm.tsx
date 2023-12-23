@@ -40,7 +40,7 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
                 name={name}
                 placeholder={placeholder}
                 value={values.descriptor}
-                onChange={(e) => values.setDescriptor(e.target.value)}
+                onChange={(e) => values.setDescriptor(e.target.value, +inputLength)}
               />
               <FormInputDescription>{inputLength}</FormInputDescription>
             </>
@@ -52,7 +52,7 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
                 name={name}
                 placeholder={placeholder}
                 value={values.title}
-                onChange={(e) => values.setTitle(e.target.value)}
+                onChange={(e) => values.setTitle(e.target.value, +inputLength)}
               />
               <FormInputDescription>{inputLength}</FormInputDescription>
             </>
@@ -63,7 +63,7 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
                 name={name}
                 placeholder={placeholder}
                 value={values.description}
-                onChange={(e) => values.setDescription(e.target.value)}
+                onChange={(e) => values.setDescription(e.target.value, +inputLength)}
               />
               <FormInputDescription>{inputLength}</FormInputDescription>
             </>
@@ -86,7 +86,7 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
                 name={name}
                 placeholder={placeholder}
                 value={values.linkTitleName}
-                onChange={(e) => values.setLinkTitleName(e.target.value)}
+                onChange={(e) => values.setLinkTitleName(e.target.value, +inputLength)}
               />
               <FormInputDescription>{inputLength}</FormInputDescription>
             </>
@@ -98,7 +98,7 @@ export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
                 name={name}
                 placeholder={placeholder}
                 value={values.link.length === 0 ? '' : values.link}
-                onChange={(e) => values.setLink(e.target.value)}
+                onChange={(e) => values.setLink(e.target.value, +inputLength)}
               />
               <StyledImg src={clip} alt="Clip" />
               <FormInputDescription>{inputLength}</FormInputDescription>

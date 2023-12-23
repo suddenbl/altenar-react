@@ -1,25 +1,26 @@
-import styled from 'styled-components'
-import { grey300Color, textDisabled, textPrimary, textSecondary } from '../../styles'
+import styled from 'styled-components';
+import { grey300Color, textDisabled, textPrimary, textSecondary } from '../../styles';
 
 export const Container = styled.div`
   display: flex;
   margin-bottom: 30px;
   gap: 10px;
   align-items: center;
-`
+`;
 
 export const Label = styled.label`
   cursor: pointer;
-`
+`;
 
-export const TextOne = styled.span`
-  color: ${textPrimary};
+export const TextOne = styled.span<{ $color: string }>`
+  color: ${(props) => (props.$color.length > 0 ? `${textDisabled}` : `${textPrimary}`)};
   font-size: 12px;
   letter-spacing: 0.4px;
-`
+  transition: color 0.3s ease-in-out;
+`;
 export const TextTwo = styled(TextOne)`
-  color: ${textDisabled};
-`
+  color: ${(props) => (props.$color.length > 0 ? `${textPrimary}` : `${textDisabled}`)};
+`;
 
 export const Switch = styled.div`
   position: relative;
@@ -42,7 +43,7 @@ export const Switch = styled.div`
     background: white;
     transform: translate(0, -50%);
   }
-`
+`;
 export const Input = styled.input`
   display: none;
 
@@ -53,4 +54,4 @@ export const Input = styled.input`
       transform: translate(26px, -50%);
     }
   }
-`
+`;

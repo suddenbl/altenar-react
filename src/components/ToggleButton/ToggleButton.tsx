@@ -11,12 +11,12 @@ export const ToggleButton: FC = () => {
 
   return (
     <Container>
-      <TextOne>Темный</TextOne>
+      <TextOne $color={isDark ? isDark.toString() : ''}>Темный</TextOne>
       <Label>
         <Input type="checkbox" checked={isDark} onChange={() => handleCheckboxChange()} />
         <Switch />
       </Label>
-      <TextTwo>Светлый</TextTwo>
+      <TextTwo $color={isDark ? isDark.toString() : ''}>Светлый</TextTwo>
     </Container>
   );
 };

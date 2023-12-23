@@ -13,6 +13,7 @@ import {
   ModalTextSecond,
   ModalCancelButton,
   ProgressBarContainer,
+  ProgressBar,
 } from './DownloadComponentStyles';
 import { useFormStore } from '../../zustand/formDataStore';
 import downloadButton from '../../assets/images/download.svg';
@@ -97,7 +98,7 @@ export const DownloadComponent: FC<DownloadComponentProps> = ({ name }) => {
         </div>
         {!isError && progress > 0 && progress < 100 && (
           <ProgressBarContainer>
-            <progress value={progress} max={100}></progress>
+            <ProgressBar value={progress} max={100}></ProgressBar>
           </ProgressBarContainer>
         )}
         {isError && <ErrorSpan>{errorMsg}</ErrorSpan>}

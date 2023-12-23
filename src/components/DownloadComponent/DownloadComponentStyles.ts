@@ -82,9 +82,7 @@ export const ModalImg = styled.img`
   max-height: 47px;
 `;
 
-export const ModalTextBlock = styled.div`
-  /* display: flex; */
-`;
+export const ModalTextBlock = styled.div``;
 
 export const ModalTextFirst = styled.p`
   color: ${textPrimary};
@@ -114,7 +112,11 @@ export const ModalCancelButton = styled.button`
 
 export const ProgressBarContainer = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   left: 0;
   right: 0;
+`;
+
+export const ProgressBar = styled.progress`
+  width: 100%;
 `;
