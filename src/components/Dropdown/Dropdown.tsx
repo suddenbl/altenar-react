@@ -7,10 +7,6 @@ import {
   DropdownContentItemText,
 } from './DropdownStyles';
 
-export interface PublishProps {
-  id: number;
-}
-
 export const Dropdown: FC<PublishProps> = (props) => {
   const [open, setOpen] = useState<boolean>(false);
 

@@ -19,10 +19,6 @@ import { useFormStore } from '../../zustand/formDataStore';
 import downloadButton from '../../assets/images/download.svg';
 import cancelButton from '../../assets/images/cancel.svg';
 
-interface DownloadComponentProps {
-  name: string;
-}
-
 export const DownloadComponent: FC<DownloadComponentProps> = ({ name }) => {
   const values = useFormStore();
 

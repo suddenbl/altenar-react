@@ -7,12 +7,6 @@ const Container = styled.div`
   margin-bottom: 35px;
 `;
 
-interface CreationBlockInterface {
-  title: string;
-  description?: string;
-  children: React.ReactNode;
-}
-
 export const CreationBlock: FC<CreationBlockInterface> = ({ title, description, children }) => {
   return (
     <Container>

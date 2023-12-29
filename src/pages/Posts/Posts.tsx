@@ -9,7 +9,7 @@ export const Posts: FC = () => {
   const { setPosts, posts } = usePostsStore();
   const [loading, setLoading] = useState(true);
 
-  const getPosts = async () => {
+  const fetchPosts = async () => {
     try {
       const response = await fetch('http://localhost:3001/posts');
       const data = await response.json();
@@ -22,7 +22,7 @@ export const Posts: FC = () => {
   };
 
   useEffect(() => {
-    getPosts();
+    fetchPosts();
   }, []);
 
   return (

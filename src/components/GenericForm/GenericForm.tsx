@@ -13,19 +13,6 @@ import { useFormStore } from '../../zustand/formDataStore';
 import clip from '../../assets/images/clip.svg';
 import { DownloadComponent } from '../DownloadComponent/DownloadComponent';
 
-type InputType = 'text' | 'textarea' | 'color' | 'file' | 'checkbox';
-export interface InputConfig {
-  flag?: string;
-  type: InputType;
-  name: string;
-  placeholder?: string;
-  value: string;
-  inputLength?: string;
-}
-interface GenericFormProps {
-  inputs: InputConfig[];
-}
-
 export const GenericForm: FC<GenericFormProps> = ({ inputs }) => {
   const values = useFormStore();
 

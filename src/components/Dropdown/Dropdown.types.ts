@@ -1,0 +1,3 @@
+interface PublishProps {
+  id: number;
+}

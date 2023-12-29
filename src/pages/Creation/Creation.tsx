@@ -21,7 +21,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useFormStore } from '../../zustand/formDataStore';
 import { CreationBlock } from '../../components/CreationBlock/CreationBlock';
-import { GenericForm, InputConfig } from '../../components/GenericForm/GenericForm';
+import { GenericForm } from '../../components/GenericForm/GenericForm';
 import { ToggleButton } from '../../components/ToggleButton/ToggleButton';
 import batteryImg from '../../assets/images/battery.svg';
 import wifiImg from '../../assets/images/wifi.svg';
