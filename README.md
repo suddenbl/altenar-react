@@ -1,15 +1,9 @@
-Test project that has been made for an opportunity to practice in different types of interactivity on pages.
+# Project for testing my skills in internship.
 
-Stack: ReactJS, TS, Zustand, styled-components, Webpack
+Stack: ReactJS, TS, Zustand, styled-components, Webpack.
 
 To run this app, you need to write:
+
+```bash
 npm run start
-
---------------------------------------------------------------------------------------------------------------
-
-Тестовый проект, который был создан для возможности попрактиковаться в разных типах интерактивности на страницах. 
-
-Технологии: ReactJS, TS, Zustand, styled-components, Webpack.
-
-Чтобы запустить приложение, нужно прописать : 
-npm run start 
+```
